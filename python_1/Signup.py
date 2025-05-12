@@ -20,46 +20,46 @@ else:
     user_name = input("Create a user name: ")
     pass_word = input("Create a password: ")
 
-ShowInfo = input("Would you like to display your information? (yes/no): ")
+    ShowInfo = input("Would you like to display your information? (yes/no): ")
 
-if ShowInfo == "yes":
-
-    print(" ")
-    print("Your information: ")
-    print("Email: " + (signup_email))
-    print("Username: " + (user_name))
-    print("Password sent to email.")
-    print("First Name: " + (first_name))
-    print("Last Name: " + (last_name))
-    print("Age: " + str(current_age))
-
-elif ShowInfo == "no":
-
-    delete = input("Would you like to delete your account? (yes/no):")
-
-    if delete == "yes":
-
-        signup_email = "n/a"
-        user_name = "n/a"
-        pass_word = "n/a"
-        first_name = "n/a"
-        last_name = "n/a"
-        age = "n/a"
-        current_age = "n/a"
+    if ShowInfo == "yes":
 
         print(" ")
         print("Your information: ")
         print("Email: " + (signup_email))
         print("Username: " + (user_name))
-        print("Password: " + (pass_word))
+        print("Password sent to email.")
         print("First Name: " + (first_name))
         print("Last Name: " + (last_name))
         print("Age: " + str(current_age))
 
-    elif delete == "no":
-        print("Thank you for staying with us.")
+    elif ShowInfo == "no":
 
-    else:
-        print("Please enter 'yes' or 'no'.")
+        delete = input("Would you like to delete your account? (yes/no):")
+
+        if delete == "yes":
+
+            signup_email = "n/a"
+            user_name = "n/a"
+            pass_word = "n/a"
+            first_name = "n/a"
+            last_name = "n/a"
+            age = "n/a"
+            current_age = "n/a"
+
+            print(" ")
+            print("Your information: ")
+            print("Email: " + (signup_email))
+            print("Username: " + (user_name))
+            print("Password: " + (pass_word))
+            print("First Name: " + (first_name))
+            print("Last Name: " + (last_name))
+            print("Age: " + str(current_age))
+
+        elif delete == "no":
+            print("Thank you for staying with us.")
+
+        else:
+            print("Please enter 'yes' or 'no'.")
 
     
