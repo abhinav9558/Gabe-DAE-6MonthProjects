@@ -16,7 +16,7 @@ These are the list of my courses.
 
 [DAE](https://mydae.schoology.com)
 
-![DAE Logo]()
+![DAE Logo](https://github.com/AntoTheSol/DAE-6MonthProjects/blob/main/DAE.png)
 
 ### This is the code for my python 1 project.
 
