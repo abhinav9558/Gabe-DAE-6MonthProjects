@@ -11,15 +11,27 @@ DATA_FILE = os.path.join(current_dir, "transaction_data.csv")
 # -------------------- App Setup --------------------
 root = tk.Tk()
 root.title("Transaction Tracker")
-root.geometry("800x500")
+root.geometry("1280x720")
+
+# Main menu frame
+main_menu_frame = tk.Frame(root)
+main_menu_frame.pack(fill=tk.BOTH, expand=True)
+main_menu_frame.tkraise()
+
+
+# Button to open the transactions frame
+show_button = tk.Button(main_menu_frame, text="Show Transactions", command=lambda: show_frame(transactions_frame))
+show_button.pack(pady=20)
+
 
 transactions_frame = tk.Frame(root)  # This will be shown later on button click
 
-def show_frame():
-    transactions_frame.pack(fill=tk.BOTH, expand=True, pady=10)
+def show_frame(frame_to_show):
+    main_menu_frame.pack_forget()
+    transactions_frame.pack_forget()
 
-show_button = tk.Button(root, text="Show Transactions Frame", command=show_frame)
-show_button.pack(pady=10)
+    frame_to_show.pack(fill=tk.BOTH, expand=True)
+    frame_to_show.tkraise()
 
 # -------------------- Transactions Setup --------------------
 columns = ("Date", "Description", "Amount", "Income/Expense", "Personal/Business", "Category")
@@ -116,6 +128,10 @@ tk.Button(button_frame, text="Add Entry", width=15, command=add_entry).grid(row=
 tk.Button(button_frame, text="Edit Entry", width=15, command=edit_entry).grid(row=0, column=1, padx=5)
 tk.Button(button_frame, text="Delete Entry", width=15, command=delete_entry).grid(row=0, column=2, padx=5)
 tk.Button(button_frame, text="Clear All", width=15, command=clear_all).grid(row=0, column=3, padx=5)
+
+# Return button to go back to main menu
+return_button = tk.Button(transactions_frame, text="Return to Menu", command=lambda: show_frame(main_menu_frame))
+return_button.pack(pady=10)
 
 # -------------------- Load Data on Start --------------------
 load_data_from_file()
