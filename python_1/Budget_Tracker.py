@@ -12,7 +12,7 @@ root = tk.Tk()
 root.title("Budget Tracker")
 root.geometry("1280x720")
 
-columns = ("Date", "Category", "Description", "Amount")
+columns = ("Date", "Description", "Amount", "Income/Expense", "Personal/Business", "Category")
 tree = ttk.Treeview(root, columns=columns, show="headings", selectmode="browse")
 for col in columns:
     tree.heading(col, text=col)
@@ -24,10 +24,7 @@ tree.pack(fill=tk.BOTH, expand=True, pady=10)
 entry_frame = tk.Frame(root)
 entry_frame.pack(pady=10)
 
-labels = [
-    "Date", "Amount", "Vendor", "Income/Expense",
-    "Vendor/Location", "Personal/Business", "Category", "Notes"
-]
+labels = ["Date", "Description", "Amount", "Income/Expense", "Personal/Business", "Category"]
 
 entry_vars = []
 entries = []
@@ -40,9 +37,9 @@ for i, label in enumerate(labels):
 
 # Pre-fill some defaults
 entries[0].insert(0, "2025-05-15")  # Date
-entries[1].insert(0, "0.00")        # Amount
+entries[2].insert(0, "0.00")        # Amount
 entries[3].insert(0, "Expense")     # Income/Expense
-entries[5].insert(0, "Personal")    # Personal/Business
+entries[4].insert(0, "Personal")    # Personal/Business
 
 
 # -------------------- File Handling --------------------
