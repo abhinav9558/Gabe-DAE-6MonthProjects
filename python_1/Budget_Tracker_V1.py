@@ -8,6 +8,8 @@ import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(current_dir, "transaction_data.csv")
 
+
+
 # -------------------- App Setup --------------------
 root = tk.Tk()
 root.title("Transaction Tracker")

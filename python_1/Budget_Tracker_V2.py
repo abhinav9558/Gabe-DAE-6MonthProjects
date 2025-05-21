@@ -1,6 +1,8 @@
+# -------------------- Imports --------------------
 import tkinter as tk
 from tkinter import ttk, messagebox
 from datetime import date
+import pandas as pd   
 import csv
 import os
 
@@ -8,7 +10,36 @@ import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(current_dir, "transaction_data.csv")
 
-# -------------------- App Setup --------------------
+# -------------------- Data Functions --------------------
+def load_transactions():
+    if os.path.exists(DATA_FILE):
+        return pd.read_csv(DATA_FILE)
+    else:
+        return pd.DataFrame(columns=["Date", "Description", "Amount", "Income/Expense", "Personal/Business", "Category"])
+
+def add_transaction(date_str, description, amount, income_expense, personal_business, category):
+    df = load_transactions()
+    new_row = {
+        "Date": date_str,
+        "Description": description,
+        "Amount": float(amount),
+        "Income/Expense": income_expense,
+        "Personal/Business": personal_business,
+        "Category": category
+    }
+    df = df.append(new_row, ignore_index=True)
+    df.to_csv(DATA_FILE, index=False)
+
+def get_totals_by_category():
+    df = load_transactions()
+    return df.groupby("Category")["Amount"].sum()
+
+def show_category_summary():
+    totals = get_totals_by_category()
+    summary_text = "\n".join(f"{cat}: ${amt:.2f}" for cat, amt in totals.items())
+    messagebox.showinfo("Spending by Category", summary_text)
+
+# -------------------- GUI Setup --------------------
 root = tk.Tk()
 root.title("Transaction Tracker")
 root.geometry("1280x720")
@@ -18,12 +49,11 @@ main_menu_frame = tk.Frame(root)
 main_menu_frame.pack(fill=tk.BOTH, expand=True)
 main_menu_frame.tkraise()
 
-
 # Button to open the transactions frame
 show_button = tk.Button(main_menu_frame, text="Show Transactions", command=lambda: show_frame(transactions_frame))
 show_button.pack(pady=20)
 
-# Transaction Frame
+
 transactions_frame = tk.Frame(root)  # This will be shown later on button click
 
 def show_frame(frame_to_show):
@@ -32,34 +62,6 @@ def show_frame(frame_to_show):
 
     frame_to_show.pack(fill=tk.BOTH, expand=True)
     frame_to_show.tkraise()
-
-# Budget Frame
-def open_budget_window(self):
-    budget_window = tk.Toplevel(self.master)
-    budget_window.title("Set Budgets by Category")
-
-    categories = self.get_unique_categories()
-
-    for idx, category in enumerate(categories):
-        tk.Label(budget_window, text=category).grid(row=idx, column=0, padx=10, pady=5, sticky="w")
-        entry = tk.Entry(budget_window)
-        entry.grid(row=idx, column=1, padx=10, pady=5)
-        entry.insert(0, str(self.budgets.get(category, "")))
-        entry.bind("<FocusOut>", lambda e, cat=category, ent=entry: self.update_budget(cat, ent.get()))
-
-def get_unique_categories(self):
-    return sorted(set(row['Category'] for row in self.transactions))
-
-def update_budget(self, category, value):
-    try:
-        val = float(value)
-        if val <= 0:
-            raise ValueError
-        self.budgets[category] = val
-    except ValueError:
-        messagebox.showerror("Invalid Input", f"Budget for '{category}' must be a positive number.")
-
-
 
 # -------------------- Transactions Setup --------------------
 columns = ("Date", "Description", "Amount", "Income/Expense", "Personal/Business", "Category")
