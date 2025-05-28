@@ -1,0 +1,14 @@
+
+
+fruits = [ "apple", "banana", "cherry" ]
+
+fruits.append( "orange" )
+ 
+print( fruits[0])
+
+def print_fruit_list( fruits ):
+    for currentFruit in fruits:
+        print( currentFruit )
+
+
+print_fruit_list( fruits )
