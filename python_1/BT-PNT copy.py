@@ -41,10 +41,10 @@ class BudgetTracker:
                 empty_df = pd.DataFrame(columns=[
                     "Date", "Description", "Amount", "Income/Expense", "Personal/Business", "Category"
                 ])
-                empty_df.to_csv(file_path, index=False)
+                empty_df.to_csv(file_path, index=False) #Index = False will not include dataframe row numbers
 
             # Load with skip option for malformed rows
-            self.transactions_df = pd.read_csv(file_path, on_bad_lines='skip')
+            self.transactions_df = pd.read_csv(file_path, on_bad_lines='skip') # on_bad_lines is a Pandas feature, skipping will remove improperly formatted rows.
             self.display_transactions()
 
         except Exception as e:
