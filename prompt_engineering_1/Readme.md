@@ -1,6 +1,6 @@
 # Prompt Engineering 1
 
-# Tokenization and Data Utilization
+# 1. Tokenization and Data Utilization
 https://chatgpt.com/share/68374909-9a80-8002-b2b9-89eef3e7e35e
 
 Can you give a proper 3000 token response about chatgpt token utilization
@@ -197,7 +197,7 @@ A breakdown of your actual app’s token flow
 Code templates that efficiently manage token limits
 Let me know!
 
-# AI Hallucination Management
+# 2. AI Hallucination Management
 
 https://chatgpt.com/share/68374a99-34c0-8002-b743-0b183e59f6b4
 
@@ -215,7 +215,7 @@ The 2023 Nobel Prize in Literature was awarded to Haruki Murakami for his contri
 Why It's a Hallucination:
 Haruki Murakami has not won the Nobel Prize in Literature as of 2023. The correct winner was Jon Fosse, a Norwegian author.
 
-# Multimodal AI Task Execution
+# 3. Multimodal AI Task Execution
 
 https://chatgpt.com/share/68374b0e-2b0c-8002-ab39-e4f19ac850a5
 
@@ -385,7 +385,7 @@ class TimeTracker:
             with open(self.filename, 'r') as f:
                 self.tasks = json.load(f)
 
-# Prompt Design and Iteration
+# 4. Prompt Design and Iteration
 
 https://chatgpt.com/share/68374bf9-eb74-8002-ab2f-5614f1c23d32
 
@@ -664,19 +664,23 @@ Random sampling	Built-in RNG for simulations.
 🧱 Example: NumPy Basics
 import numpy as np
 
-# Create arrays
+Create arrays
+
 a = np.array([1, 2, 3])
 b = np.array([[1, 2], [3, 4]])
 
-# Vectorized operation
+Vectorized operation
+
 a_squared = a ** 2  # [1, 4, 9]
 
-# Broadcasting
+Broadcasting
+
 c = np.array([1, 2, 3])
 d = np.array([[1], [2]])
 result = c + d  # [[2, 3, 4], [3, 4, 5]]
 
-# Random numbers
+Random numbers
+
 np.random.seed(0)
 rand_nums = np.random.randn(3, 2)
 🛠️ Common NumPy Functions
@@ -703,7 +707,8 @@ Powerful indexing	Boolean, multi-level, loc/iloc access.
 🧱 Example: Pandas Basics
 import pandas as pd
 
-# Create a DataFrame
+Create a DataFrame
+
 data = {
     'Name': ['Alice', 'Bob', 'Charlie'],
     'Age': [25, 30, 35],
@@ -711,18 +716,22 @@ data = {
 }
 df = pd.DataFrame(data)
 
-# Accessing data
+Accessing data
+
 df['Age']           # Series
 df.iloc[0]          # First row
 df.loc[0, 'Salary'] # Cell
 
-# Filtering
+Filtering
+
 df[df['Age'] > 28]
 
-# Adding a column
+Adding a column
+
 df['Tax'] = df['Salary'] * 0.2
 
-# Summary stats
+Summary stats
+
 df.describe()
 🧮 Combining Pandas and NumPy
 df['Z-Score'] = (df['Age'] - np.mean(df['Age'])) / np.std(df['Age'])
@@ -843,7 +852,7 @@ Performance with large data	✅ (in memory)	✅ (higher abstraction)
 NumPy provides the underlying numerical power and speed.
 Pandas provides a rich, user-friendly interface built on top of that power.
 
-# Text and Image Generation Workflow
+# 5. Text and Image Generation Workflow
 
 https://chatgpt.com/share/68374d6c-c0bc-8002-8211-35f787b3eb36
 
@@ -861,6 +870,6 @@ Generating image: Max and Buddy playing in a sunny meadow...
 ![Boy and His Dog][B&D.png]
 
 
-# Exported Interaction Documentation
+# 6. Exported Interaction Documentation
 
 Check ReadMe.md
