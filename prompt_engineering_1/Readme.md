@@ -867,7 +867,7 @@ Max was a curious 10-year-old boy who loved adventures. His best friend in the w
 
 Generating image: Max and Buddy playing in a sunny meadow...
 
-![Boy and His Dog][BD.png]
+![Boy and His Dog](BD.png)
 
 
 # 6. Exported Interaction Documentation
