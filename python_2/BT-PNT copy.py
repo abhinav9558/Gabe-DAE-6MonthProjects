@@ -50,43 +50,6 @@ class BudgetTracker:
         except Exception as e:
             messagebox.showerror("Error", f"Could not load transactions:\n{e}")
 
-        self.tree = ttk.Treeview(self.root, columns=..., show="headings")
-        tk.Button(self.root, text="Delete Selected Transaction", command=self.delete_transaction).pack(pady=5)
-
-    def delete_transaction(self):
-    selected_item = self.tree.selection()
-    if not selected_item:
-        messagebox.showwarning("No selection", "Please select a transaction to delete.")
-        return
-
-    # Get the transaction details from Treeview
-    values = self.tree.item(selected_item, 'values')
-    if not values:
-        return
-
-    # Remove from DataFrame
-    try:
-        self.transactions_df = self.transactions_df[
-            ~((self.transactions_df["Date"] == values[0]) &
-              (self.transactions_df["Description"] == values[1]) &
-              (self.transactions_df["Amount"] == float(values[2])) &
-              (self.transactions_df["Income/Expense"] == values[3]) &
-              (self.transactions_df["Person"] == values[4]) &
-              (self.transactions_df["Category"] == values[5]))
-        ]
-    except Exception as e:
-        messagebox.showerror("Error", f"Failed to delete transaction: {e}")
-        return
-
-    # Save to CSV
-    self.transactions_df.to_csv(TRANSACTION_FILE, index=False)
-
-    # Remove from Treeview
-    self.tree.delete(selected_item)
-
-    messagebox.showinfo("Deleted", "Transaction deleted successfully.")
-
-
     def load_budgets(self):
         if os.path.exists(BUDGET_FILE):
             try:
@@ -180,7 +143,6 @@ class BudgetTracker:
         tk.Button(form_frame, text="Add Transaction", command=save_transaction).grid(row=7, columnspan=2, pady=10)
 
         tk.Button(self.root, text="Back to Main Menu", command=self.create_main_menu).pack(pady=10)
-
 
     def view_budgets(self):
         self.clear_frame()
