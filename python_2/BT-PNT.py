@@ -43,6 +43,27 @@ class BudgetTracker:
 
         self.create_main_menu()
 
+        # Center the window on screen without changing its size
+        self.center_window(self.root)
+
+
+    def center_window(self, window):
+        """
+        Centers a Tkinter window on the screen without changing its size.
+
+        Args:
+            window: The Tkinter window (Tk or Toplevel) to center.
+        """
+        window.update_idletasks()  # Ensure size info is updated
+        width = window.winfo_width()
+        height = window.winfo_height()
+        screen_width = window.winfo_screenwidth()
+        screen_height = window.winfo_screenheight()
+        x = (screen_width // 2) - (width // 2)
+        y = (screen_height // 2) - (height // 2)
+        window.geometry(f"+{x}+{y}")
+
+
     def create_main_menu(self):
         """
         Create and display the main menu UI for the budget tracker.
@@ -113,12 +134,13 @@ class BudgetTracker:
             try:
                 file_path = TRANSACTION_FILE
                 if not os.path.isfile(file_path):
+                    # If the csv file of transactions is not found in file_path directory, it will generate a new csv file in that location with the necesary column headers.
                     empty_df = pd.DataFrame(columns=[
                         "Date", "Description", "Amount", "Income/Expense", "Personal/Business", "Category"
                     ])
-                    empty_df.to_csv(file_path, index=False)
+                    empty_df.to_csv(file_path, index=False) #C
 
-                self.transactions_df = pd.read_csv(file_path, on_bad_lines='skip')
+                self.transactions_df = pd.read_csv(file_path, on_bad_lines='skip') # Using Pandas we can read the csv file in the data frame and any improperly formatted columns will be will be skipped using on_bad_lines='skip'.
                 self.display_transactions()
             
             except Exception as e:
@@ -243,6 +265,9 @@ class BudgetTracker:
         category_entry = tk.Entry(form_frame)
         category_entry.grid(row=6, column=1)
 
+        # Center the window on screen without changing its size
+        self.center_window(self.root)
+
         def save_transaction():
             """
             Save a new transaction to the CSV file and update the display.
@@ -320,6 +345,9 @@ class BudgetTracker:
 
         tk.Button(self.root, text="Back to Main Menu", command=self.create_main_menu).pack(pady=10)
 
+        # Center the window on screen without changing its size
+        self.center_window(self.root)
+
     def set_budget(self):
         """
         Display a form to set or update the budget for a category.
@@ -342,6 +370,9 @@ class BudgetTracker:
 
         self.clear_frame()
         tk.Label(self.root, text="Set Category Budget", font=('Helvetica', 14)).pack(pady=10)
+
+        # Center the window on screen without changing its size
+        self.center_window(self.root)
 
         # Load categories from transactions
         if os.path.exists(TRANSACTION_FILE):
