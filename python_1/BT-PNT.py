@@ -8,9 +8,33 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 TRANSACTION_FILE = os.path.join(SCRIPT_DIR, "created_transactions.csv")
 BUDGET_FILE = os.path.join(SCRIPT_DIR, "created_budgets.csv")
 
+DEFAULT_CATEGORIES = [
+    "Rent / Mortgage", "Utilities", "Internet & Cable", "Groceries",
+    "Dining Out", "Fuel / Gas", "Clothing", "Health Insurance",
+    "Medical", "Tuition", "Office Supplies", "Emergency Fund",
+    "Credit Card Payments", "Movies", "Travel", "Gifts", "Miscellaneous"
+]
 
 class BudgetTracker:
     def __init__(self, root):
+        """
+        Initialize the Budget Tracker application.
+
+        Sets up the main window, initializes data structures, loads budgets,
+        and displays the main menu.
+
+        Args:
+            root: The Tkinter root window.
+
+        Returns:
+            None
+
+        Side Effects:
+            - Sets window title.
+            - Initializes transactions DataFrame and budget dictionary.
+            - Loads saved budgets.
+            - Displays the main menu UI.
+        """
         self.root = root
         self.root.title("Budget Tracker")
         self.transactions_df = pd.DataFrame()
@@ -19,7 +43,44 @@ class BudgetTracker:
 
         self.create_main_menu()
 
+        # Center the window on screen without changing its size
+        self.center_window(self.root)
+
+
+    def center_window(self, window):
+        """
+        Centers a Tkinter window on the screen without changing its size.
+
+        Args:
+            window: The Tkinter window (Tk or Toplevel) to center.
+        """
+        window.update_idletasks()  # Ensure size info is updated
+        width = window.winfo_width()
+        height = window.winfo_height()
+        screen_width = window.winfo_screenwidth()
+        screen_height = window.winfo_screenheight()
+        x = (screen_width // 2) - (width // 2)
+        y = (screen_height // 2) - (height // 2)
+        window.geometry(f"+{x}+{y}")
+
+
     def create_main_menu(self):
+        """
+        Create and display the main menu UI for the budget tracker.
+
+        Clears the current frame and displays buttons for key actions.
+
+        Args:
+            self: Instance of the class.
+
+        Returns:
+            None
+
+        Side Effects:
+            - Clears existing UI elements.
+            - Adds and displays new buttons and labels on the root window.
+        """
+
         self.clear_frame()
 
         tk.Label(self.root, text="Budget Tracker Main Menu", font=('Helvetica', 16)).pack(pady=10)
@@ -30,27 +91,85 @@ class BudgetTracker:
         tk.Button(self.root, text="Exit", command=self.root.quit).pack(pady=5)
 
     def clear_frame(self):
+        """
+        Remove all widgets from the main window.
+
+        Clears the current UI by destroying all child widgets of the root window.
+
+        Args:
+            self: Instance of the class.
+
+        Returns:
+            None
+
+        Side Effects:
+            - Deletes all widgets from the root window.
+        """
+
         for widget in self.root.winfo_children():
             widget.destroy()
 
     def load_transactions(self):
-        try:
-            file_path = TRANSACTION_FILE
-            if not os.path.isfile(file_path):
-                # Create a new CSV with correct headers
-                empty_df = pd.DataFrame(columns=[
-                    "Date", "Description", "Amount", "Income/Expense", "Personal/Business", "Category"
-                ])
-                empty_df.to_csv(file_path, index=False) #Index = False will not include dataframe row numbers
+        """
+        Load transactions from a CSV file into a DataFrame.
 
-            # Load with skip option for malformed rows
-            self.transactions_df = pd.read_csv(file_path, on_bad_lines='skip') # on_bad_lines is a Pandas feature, skipping will remove improperly formatted rows.
-            self.display_transactions()
+        Creates the file with default columns if it doesn't exist.
+        On failure, prompts the user to retry or cancel.
 
-        except Exception as e:
-            messagebox.showerror("Error", f"Could not load transactions:\n{e}")
+        Args:
+            self: Instance of the class.
+
+        Returns:
+            None
+
+        Side Effects:
+            - Updates self.transactions_df.
+            - Displays transactions.
+            - Shows error dialog on failure.
+            - Prints status message.
+        """
+
+        success = False
+        while not success:
+            try:
+                file_path = TRANSACTION_FILE
+                if not os.path.isfile(file_path):
+                    # If the csv file of transactions is not found in file_path directory, it will generate a new csv file in that location with the necesary column headers.
+                    empty_df = pd.DataFrame(columns=[
+                        "Date", "Description", "Amount", "Income/Expense", "Personal/Business", "Category"
+                    ])
+                    empty_df.to_csv(file_path, index=False) #C
+
+                self.transactions_df = pd.read_csv(file_path, on_bad_lines='skip') # Using Pandas we can read the csv file in the data frame and any improperly formatted columns will be will be skipped using on_bad_lines='skip'.
+                self.display_transactions()
+            
+            except Exception as e:
+                retry = messagebox.askretrycancel("Error", f"Could not load transactions:\n{e}\n\nRetry?")
+                if not retry:
+                    break  # Exit the loop if user cancels
+            else:
+                success = True
+            finally:
+                print("Tried loading transaction file.")
+
 
     def load_budgets(self):
+        """
+        Load saved budget data from a CSV file into a dictionary.
+
+        If the file exists, it reads category-budget pairs into `self.budgets`.
+
+        Args:
+            self: Instance of the class.
+
+        Returns:
+            None
+
+        Side Effects:
+            - Updates self.budgets.
+            - Shows error dialog if file cannot be read.
+        """
+
         if os.path.exists(BUDGET_FILE):
             try:
                 df = pd.read_csv(BUDGET_FILE)
@@ -59,11 +178,42 @@ class BudgetTracker:
                 messagebox.showerror("Error", f"Could not load budgets:\n{e}")
 
     def save_budgets(self):
+        """
+        Save the current budget dictionary to a CSV file.
+
+        Converts `self.budgets` into a DataFrame and writes it to disk.
+
+        Args:
+            self: Instance of the class.
+
+        Returns:
+            None
+
+        Side Effects:
+            - Writes to BUDGET_FILE.
+        """
+
         df = pd.DataFrame(list(self.budgets.items()), columns=["Category", "Budget"])
         df.to_csv(BUDGET_FILE, index=False)
 
 
     def display_transactions(self):
+        """
+        Display the transaction table and input form in the UI.
+
+        Clears the current frame and shows a table of transactions,
+        followed by a form for adding new transactions.
+
+        Args:
+            self: Instance of the class.
+
+        Returns:
+            None
+
+        Side Effects:
+            - Clears the UI and repopulates it with transaction-related widgets.
+        """
+
         self.clear_frame()
         tk.Label(self.root, text="Transaction Table", font=('Helvetica', 14)).pack(pady=10)
 
@@ -115,7 +265,29 @@ class BudgetTracker:
         category_entry = tk.Entry(form_frame)
         category_entry.grid(row=6, column=1)
 
+        # Center the window on screen without changing its size
+        self.center_window(self.root)
+
         def save_transaction():
+            """
+            Save a new transaction to the CSV file and update the display.
+
+            Gathers form data, validates the amount, appends the transaction
+            to the CSV file and updates the internal DataFrame.
+
+            Args:
+                None (uses closure variables from the parent method).
+
+            Returns:
+                None
+
+            Side Effects:
+                - Appends new row to TRANSACTION_FILE.
+                - Updates self.transactions_df.
+                - Shows success or error message.
+                - Refreshes the transaction display.
+            """    
+
             try:
                 new_data = {
                     "Date": date_var.get(),
@@ -145,6 +317,22 @@ class BudgetTracker:
         tk.Button(self.root, text="Back to Main Menu", command=self.create_main_menu).pack(pady=10)
 
     def view_budgets(self):
+        """
+        Display budgets and amounts spent per category.
+
+        Clears the frame and lists each category's budget alongside total spent.
+        Includes a button to return to the main menu.
+
+        Args:
+            self: Instance of the class.
+
+        Returns:
+            None
+
+        Side Effects:
+            - Updates the UI with budget and spending information.
+        """
+
         self.clear_frame()
         tk.Label(self.root, text="Category Budgets", font=('Helvetica', 14)).pack(pady=10)
 
@@ -157,9 +345,34 @@ class BudgetTracker:
 
         tk.Button(self.root, text="Back to Main Menu", command=self.create_main_menu).pack(pady=10)
 
+        # Center the window on screen without changing its size
+        self.center_window(self.root)
+
     def set_budget(self):
+        """
+        Display a form to set or update the budget for a category.
+
+        Loads existing categories from transactions (if available).
+        Allows user to select or enter a category and specify a budget amount.
+        Saves the budget on successful input and returns to the main menu.
+
+        Args:
+            self: Instance of the class.
+
+        Returns:
+            None
+
+        Side Effects:
+            - Updates self.budgets and saves to file.
+            - Displays success or error dialogs.
+            - Updates the UI with form elements.
+        """
+
         self.clear_frame()
         tk.Label(self.root, text="Set Category Budget", font=('Helvetica', 14)).pack(pady=10)
+
+        # Center the window on screen without changing its size
+        self.center_window(self.root)
 
         # Load categories from transactions
         if os.path.exists(TRANSACTION_FILE):
@@ -186,6 +399,25 @@ class BudgetTracker:
         amount_entry.pack()
 
         def save_budget():
+            """
+            Save the budget for a selected category after validating input.
+
+            Retrieves the category and amount from the form, updates the budget
+            dictionary, saves it to file, and returns to the main menu. Shows an
+            error message if the amount is invalid.
+
+            Args:
+                None (uses closure variables from the parent method).
+
+            Returns:
+                None
+
+            Side Effects:
+                - Updates self.budgets and writes to disk.
+                - Displays success or error messages.
+                - Navigates back to the main menu UI.
+            """
+
             category = category_var.get()
             try:
                 amount = float(amount_entry.get())
