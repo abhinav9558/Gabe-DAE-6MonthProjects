@@ -1,15 +1,25 @@
 Feedback
 
 - Abhinav
-I like the app. I only have one suggestion and that is to add a drop down for the ategory as its confusing while adding the transaction. Also Users might not remmeber what categories they put in. So Add a Constant categories like Food, Travel, Outing etc and also an option to add custom categories and then can have a drop down in the transactoin page so its easy for user to select one.
++ I like the app. I only have one suggestion and that is to add a drop down for the category as its confusing while 
+adding the transaction. Also Users might not remmeber what categories they put in. 
+So Add a Constant categories like Food, Travel, Outing etc and also an option to add custom categories and then can 
+have a drop down in the transactoin page so its easy for user to select one.
+
 If there is no category in the budget from teh transaction page it should not add a transaction
+
 If its a expense add (-) before the number and (+) for income or even as you said green and red color.
 
 
 kay
-Window Consistency: Set window size and orientation in code for a consistent startup experience.
++ Window Consistency: Set window size and orientation in code for a consistent startup experience.
+
 Startup Clarity: Add a quick intro or splash screen to explain what the app does.
+
 Input Guidance: Include tooltips or placeholder text for entry fields like "Category" to guide users.
-Category Input: Use dropdown menus for category selection to reduce confusion.
+
++ Category Input: Use dropdown menus for category selection to reduce confusion.
+
 Visual Feedback: Add charts or visuals to show budget status (over/under) for better clarity.
+
 General Praise: The app works well—keep refining and building on it.
