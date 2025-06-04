@@ -1,8 +1,4 @@
 Date,Description,Amount,Income/Expense,Personal/Business,Category
-2025-06-03,Car,25.0,Expense,Personal,Gas
-2025-06-04,Dunkin,25.0,Expense,Personal,Restaurant
-2025-06-04,Car,25.0,Expense,Personal,Gas
-2025-06-04,cart,25.0,Expense,Personal,Fuel / Gas
-2025-06-04,fghhgjh,56.0,Expense,Personal,dffadas
 2025-06-04,Water,300.0,Expense,Personal,Utilities
-2025-06-04,Dunkin,4.0,Expense,Personal,Dining Out
+2025-06-03,Dunkin,100.0,Expense,Personal,Dining Out
+2025-06-04,Car Parts,200.0,Expense,Business,Repairs

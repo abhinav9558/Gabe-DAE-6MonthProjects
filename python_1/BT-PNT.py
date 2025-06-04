@@ -39,6 +39,9 @@ class BudgetTracker:
         self.root.title("Budget Tracker")
         self.transactions_df = pd.DataFrame()
         self.budgets = {}
+
+        # Makes sure both transactions and budgets will be properly parsed
+        self.load_transactions()
         self.load_budgets()
 
         self.create_main_menu()
@@ -108,6 +111,76 @@ class BudgetTracker:
 
         for widget in self.root.winfo_children():
             widget.destroy()
+
+    def sort_column(self, col):
+        """
+        Sort the Treeview column when header is clicked.
+        Automatically switches between ascending/descending.
+
+        Args:
+            col (str): Column name to sort by.
+
+        Returns:
+            None
+        """
+        reverse = self.sort_direction.get(col, False)
+
+        def try_parse(val):
+            # Try to parse date
+            try:
+                return pd.to_datetime(val)
+            except:
+                pass
+            # Try to parse number
+            try:
+                return float(val)
+            except:
+                pass
+            return str(val).lower()  # Fallback to string
+
+        # Use custom sort key to handle dates, numbers, and strings
+        sorted_df = self.transactions_df.copy()
+        sorted_df["_sort_key"] = sorted_df[col].map(try_parse)
+        sorted_df = sorted_df.sort_values("_sort_key", ascending=not reverse).drop(columns=["_sort_key"])
+
+        self.sort_direction[col] = not reverse
+        self.transactions_df = sorted_df
+
+        # Clear the tree and re-insert sorted rows
+        for row in self.tree.get_children():
+            self.tree.delete(row)
+        for _, row_data in sorted_df.iterrows():
+            self.tree.insert("", "end", values=list(row_data))
+
+    def handle_delete_click(self, event):
+        """
+        Handle click on Treeview rows. Deletes the row if ❌ is clicked.
+        """
+        region = self.tree.identify("region", event.x, event.y)
+        if region != "cell":
+            return
+
+        row_id = self.tree.identify_row(event.y)
+        col = self.tree.identify_column(event.x)
+
+        col_index = int(col.replace("#", "")) - 1
+
+        if self.tree["columns"][col_index] == "Delete":
+            confirm = messagebox.askyesno("Delete", "Delete this transaction?")
+            if confirm:
+                try:
+                    # Drop the row by index
+                    self.transactions_df.drop(index=int(row_id), inplace=True)
+                    self.transactions_df.reset_index(drop=True, inplace=True)
+
+                    # Save updated CSV
+                    self.transactions_df.to_csv(TRANSACTION_FILE, index=False)
+
+                    # Refresh UI
+                    self.display_transactions()
+                except Exception as e:
+                    messagebox.showerror("Error", f"Failed to delete row:\n{e}")
+
 
     def load_transactions(self):
         """
@@ -221,49 +294,67 @@ class BudgetTracker:
         table_frame.pack()
 
         tree = ttk.Treeview(table_frame)
-        tree["columns"] = list(self.transactions_df.columns)
+
+        columns = list(self.transactions_df.columns) + ["Delete"]
+        tree["columns"] = columns
+
         tree["show"] = "headings"
 
+         # Store tree so it's accessible in sort_column
+        self.tree = tree
+        self.sort_direction = {}  # Tracks sort direction per column
+
         for col in self.transactions_df.columns:
-            tree.heading(col, text=col)
-            tree.column(col, anchor="center")
+            tree.heading(col, text=col, command=lambda c=col: self.sort_column(c))
+
 
         for index, row in self.transactions_df.iterrows():
-            tree.insert("", "end", values=list(row))
+            tree.insert(parent="", index="end", iid=str(index), values=list(row) + ["✖️"])
+
 
         tree.pack()
+
+        tree.bind("<Button-1>", self.handle_delete_click)
+
+        self.tree = tree  # Store tree reference
+
 
         # ----- Add Transaction Form -----
         form_frame = tk.Frame(self.root)
         form_frame.pack(pady=10)
 
-        tk.Label(form_frame, text="Add New Transaction", font=('Helvetica', 12)).grid(row=0, columnspan=2, pady=5)
+        # Section title (centered above the full row)
+        tk.Label(form_frame, text="Add New Transaction", font=('Helvetica', 12)).grid(row=0, column=0, columnspan=6, pady=5)
 
-        tk.Label(form_frame, text="Date").grid(row=1, column=0)
+        # Row of labels (side by side)
+        tk.Label(form_frame, text="Date").grid(row=1, column=0, padx=5, pady=5)
+        tk.Label(form_frame, text="Description").grid(row=1, column=1, padx=5, pady=5)
+        tk.Label(form_frame, text="Amount").grid(row=1, column=2, padx=5, pady=5)
+        tk.Label(form_frame, text="Income/Expense").grid(row=1, column=3, padx=5, pady=5)
+        tk.Label(form_frame, text="Personal/Business").grid(row=1, column=4, padx=5, pady=5)
+        tk.Label(form_frame, text="Category").grid(row=1, column=5, padx=5, pady=5)
+
+        # Row of entry fields (aligned under each label)
         date_var = tk.StringVar(value=datetime.now().strftime("%Y-%m-%d"))
-        tk.Entry(form_frame, textvariable=date_var).grid(row=1, column=1)
+        tk.Entry(form_frame, textvariable=date_var, width=12).grid(row=2, column=0, padx=5)
 
-        tk.Label(form_frame, text="Description").grid(row=2, column=0)
-        desc_entry = tk.Entry(form_frame)
-        desc_entry.grid(row=2, column=1)
+        desc_entry = tk.Entry(form_frame, width=15)
+        desc_entry.grid(row=2, column=1, padx=5)
 
-        tk.Label(form_frame, text="Amount").grid(row=3, column=0)
-        amount_entry = tk.Entry(form_frame)
-        amount_entry.grid(row=3, column=1)
+        amount_entry = tk.Entry(form_frame, width=10)
+        amount_entry.grid(row=2, column=2, padx=5)
 
-        tk.Label(form_frame, text="Income/Expense").grid(row=4, column=0)
         type_var = tk.StringVar(value="Expense")
-        type_menu = ttk.Combobox(form_frame, textvariable=type_var, values=["Income", "Expense"], state="readonly")
-        type_menu.grid(row=4, column=1)
+        type_menu = ttk.Combobox(form_frame, textvariable=type_var, values=["Income", "Expense"], state="readonly", width=12)
+        type_menu.grid(row=2, column=3, padx=5)
 
-        tk.Label(form_frame, text="Personal/Business").grid(row=5, column=0)
         account_var = tk.StringVar(value="Personal")
-        account_menu = ttk.Combobox(form_frame, textvariable=account_var, values=["Personal", "Business"], state="readonly")
-        account_menu.grid(row=5, column=1)
+        account_menu = ttk.Combobox(form_frame, textvariable=account_var, values=["Personal", "Business"], state="readonly", width=12)
+        account_menu.grid(row=2, column=4, padx=5)
 
-        tk.Label(form_frame, text="Category").grid(row=6, column=0)
-        category_entry = tk.Entry(form_frame)
-        category_entry.grid(row=6, column=1)
+        category_var = tk.StringVar()
+        category_entry = ttk.Combobox(form_frame, textvariable=category_var, values=DEFAULT_CATEGORIES, state="normal", width=12)
+        category_entry.grid(row=2, column=5, padx=5)
 
         # Center the window on screen without changing its size
         self.center_window(self.root)
