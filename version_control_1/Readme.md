@@ -5,18 +5,18 @@ This DAE folder shows my competency with GitHub in creating a respository, commi
 
 Criteria
 
-##Track project changes on GitHub
+### Track project changes on GitHub
 
 A published project on GitHub with all tracked changes over the period of the module through Git
 
-##Validate Git operations securely
+### Validate Git operations securely
 
 Operations authenticated on Git
 
-##Configure Git's global user details
+### Configure Git's global user details
 
 Git configurations are set at a global level to at minimum Username and email
 
-##Commit local changes via terminal
+### Commit local changes via terminal
 
 All updates or changes committed locally via the terminal
