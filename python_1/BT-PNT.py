@@ -409,19 +409,10 @@ class BudgetTracker:
 
     def view_budgets(self):
         """
-        Display budgets and amounts spent per category.
+        Display budgets and amounts spent per category with the ability to delete them.
 
         Clears the frame and lists each category's budget alongside total spent.
-        Includes a button to return to the main menu.
-
-        Args:
-            self: Instance of the class.
-
-        Returns:
-            None
-
-        Side Effects:
-            - Updates the UI with budget and spending information.
+        Includes delete buttons for each budget and a button to return to the main menu.
         """
 
         self.clear_frame()
@@ -431,12 +422,26 @@ class BudgetTracker:
             spent = self.transactions_df[
                 self.transactions_df["Category"] == category
             ]["Amount"].sum()
+
             msg = f"{category}: Budget = {amount}, Spent = {spent}"
-            tk.Label(self.root, text=msg).pack()
+
+            row_frame = tk.Frame(self.root)
+            row_frame.pack(pady=2)
+
+            tk.Label(row_frame, text=msg).pack(side="left", padx=5)
+
+            # Inline delete function for this specific category
+            def delete(c=category):
+                confirm = messagebox.askyesno("Confirm Delete", f"Delete budget for '{c}'?")
+                if confirm:
+                    del self.budgets[c]
+                    if hasattr(self, "save_budgets"):
+                        self.save_budgets()  # Optional if persistence is implemented
+                    self.view_budgets()  # Refresh view
+
+            tk.Button(row_frame, text="Delete", fg="red", command=delete).pack(side="right")
 
         tk.Button(self.root, text="Back to Main Menu", command=self.create_main_menu).pack(pady=10)
-
-        # Center the window on screen without changing its size
         self.center_window(self.root)
 
     def set_budget(self):
