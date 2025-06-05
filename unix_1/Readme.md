@@ -2,19 +2,24 @@
 
 This DAE folder displays my competency with using terminal commands.
 
-Criteria
+## Criteria
 
-Commands
+### Commands
+
 Show us of the ls, pwd, cat and touch commands
 
-Options
+### Options
+
 Add an option to a command
 
-Arguments
+### Arguments
+
 Add and argument to a command
 
-Text Editors
+### Text Editors
+
 Create and edit a file
 
-Permissions
+### Permissions
+
 Read, write, execute and view permissions

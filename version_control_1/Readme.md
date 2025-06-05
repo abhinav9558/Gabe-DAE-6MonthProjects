@@ -3,7 +3,7 @@
 This DAE folder shows my competency with GitHub in creating a respository, commiting, pushing, and pulling my work.
 
 
-Criteria
+## Criteria
 
 ### Track project changes on GitHub
 
