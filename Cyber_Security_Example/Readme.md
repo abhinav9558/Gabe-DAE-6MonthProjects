@@ -4,6 +4,8 @@
 
 A **Security Operations Centre (SOC) Analyst** is a crucial frontline professional responsible for monitoring, detecting, analysing, and swiftly responding to cyber threats to safeguard an organisation's networks and valuable data. This role is often considered an excellent entry point into cybersecurity and is frequently described as the "traditional entry role in the security industry"
 
+![Duties of a SOC Analyst](Duties_of_a_SOC_Analyst.jpg)
+
 ## SOC Analyst Responsibilities
 
 **Primary Responsibilities and Functions:**
@@ -22,6 +24,7 @@ A **Security Operations Centre (SOC) Analyst** is a crucial frontline profession
 
 - **Staying Current:** Given the constant evolution of cyber threats, SOC analysts must stay updated on emerging cyber trends and advancements in IT and security
 
+![SOC Analyst Responsibilities Skill Background Salary](soc-analyst-responsibilities-skill-background-salary.jpg)
 
 ## SOC Analyst Tech Stacks or Frameworks
 
