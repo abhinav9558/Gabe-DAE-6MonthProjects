@@ -44,7 +44,7 @@ Tools and Technologies Every SOC Analyst Must Master: To perform their duties ef
 
 • Log Forensics Tools: For analysing logs from Windows Event Logs and Linux Syslogs to detect suspicious activities
 
-## Example Projects
+## SOC Analyst Example Projects
 
 A Security Operations Centre (SOC) Analyst can work on a diverse range of projects, from foundational tasks for beginners to more complex simulations for advanced professionals, all designed to build practical skills in defending against cyber threats. These hands-on experiences are crucial for understanding how to protect networks and data in real-world scenarios.
 Here are some example projects a SOC Analyst might work on, categorised by skill level:
@@ -54,44 +54,47 @@ These projects provide a solid foundation in cybersecurity and help individuals 
 ### Log Analysis with SIEM:
 
 ◦ What you'll do: Set up a Security Information and Event Management (SIEM) tool (like Splunk, IBM QRadar, or Elastic SIEM). You would gather logs from various systems such as servers, firewalls, and endpoints. The project involves creating custom alerts and correlation rules to detect suspicious activities, such as multiple failed logins or unusual network traffic, and then practising sifting through these logs to identify potential threats and security incidents.
+
 ◦ Skills Developed: Analytical skills, understanding of SIEM platforms.
 
 ### Basic Threat Intelligence Gathering:
 
 ◦ What you'll do: Utilise open-source intelligence (OSINT) tools like VirusTotal, AlienVault OTX, and Shodan to collect Indicators of Compromise (IOCs), such as malicious IPs, domains, and file hashes. You would then build reports summarising these findings to outline potential threats and vulnerabilities, and learn how threat intelligence is shared within a SOC. Threat Intelligence Platforms (TIPs) are crucial for providing insights and IOCs to help analysts stay ahead of attacks.
+
 ◦ Skills Developed: Understanding of threat data collection and usage.
-•
+
 ### Packet Capture and Analysis Using Wireshark:
-◦
-What you'll do: Use Wireshark, a powerful tool for capturing and analysing network traffic, to collect live network data. This involves inspecting network packets, analysing protocols like TCP, UDP, and HTTP, and identifying anomalies such as unexpected data transfers or port scans that could indicate malicious activity.
-◦
-Skills Developed: Network forensics skills and deeper understanding of network data flow.
-•
+
+◦ What you'll do: Use Wireshark, a powerful tool for capturing and analysing network traffic, to collect live network data. This involves inspecting network packets, analysing protocols like TCP, UDP, and HTTP, and identifying anomalies such as unexpected data transfers or port scans that could indicate malicious activity.
+
+◦ Skills Developed: Network forensics skills and deeper understanding of network data flow.
+
 ### Windows and Linux Log Forensics:
 
 ◦ What you'll do: Analyse logs from both Windows and Linux systems. For Windows, this means reviewing Event Logs for signs of failed logins, account lockouts, or unauthorised access. For Linux, it involves analysing Syslogs to detect suspicious commands or unusual user activity. You might also use PowerShell for Windows and Bash scripts for Linux to automate log collection and analysis. Sysmon logs can be used for more detailed visibility into system activity on Windows.
-◦
-Skills Developed: Attention to detail, familiarity with Windows and Linux environments, and understanding of system-level evidence.
-Intermediate SOC Analyst Projects
+
+◦ Skills Developed: Attention to detail, familiarity with Windows and Linux environments, and understanding of system-level evidence.
+
+### Intermediate SOC Analyst Projects
 These projects push skills further and provide hands-on experience with more advanced cybersecurity scenarios.
-•
-Incident Detection and Response Simulation:
-◦
-What you'll do: Create simulated cyber incidents, such as phishing attacks, malware infections, or data breaches. You would then practice responding using tools like SIEM platforms (Splunk, QRadar) and threat intelligence tools to investigate and analyse the incident. This includes documenting the process in a clear incident report outlining the timeline, impact, and remediation steps, and testing different mitigation strategies.
-◦
-Skills Developed: Incident response skills, experience in a dynamic SOC environment.
-•
-Malware Analysis and Reverse Engineering:
-◦
-What you'll do: Set up a sandbox environment (e.g., Cuckoo Sandbox or Any.Run) to safely analyse malware samples. Tools like Ghidra or IDA Pro would be used to reverse engineer the malware's code and behaviour, extracting Indicators of Compromise (IOCs) such as malicious IP addresses, domain names, and file hashes. Findings are then documented and reported.
-◦
-Skills Developed: Deep technical analysis of malicious software.
-•
-Threat Hunting with Open Source Tools:
-◦
-What you'll do: Proactively search for hidden threats using open-source tools like Sigma, YARA, and Zeek. This involves analysing network traffic, system logs, and memory dumps for signs of malicious activity. You might also develop custom threat hunting strategies for Advanced Persistent Threats (APTs) and collaborate to refine techniques.
-◦
-Skills Developed: Proactive threat detection and analytical skills.
+
+
+### Incident Detection and Response Simulation:
+
+◦ What you'll do: Create simulated cyber incidents, such as phishing attacks, malware infections, or data breaches. You would then practice responding using tools like SIEM platforms (Splunk, QRadar) and threat intelligence tools to investigate and analyse the incident. This includes documenting the process in a clear incident report outlining the timeline, impact, and remediation steps, and testing different mitigation strategies.
+
+◦ Skills Developed: Incident response skills, experience in a dynamic SOC environment.
+
+### Malware Analysis and Reverse Engineering:
+
+◦ What you'll do: Set up a sandbox environment (e.g., Cuckoo Sandbox or Any.Run) to safely analyse malware samples. Tools like Ghidra or IDA Pro would be used to reverse engineer the malware's code and behaviour, extracting Indicators of Compromise (IOCs) such as malicious IP addresses, domain names, and file hashes. Findings are then documented and reported.
+
+◦ Skills Developed: Deep technical analysis of malicious software.
+
+### Threat Hunting with Open Source Tools:
+◦ What you'll do: Proactively search for hidden threats using open-source tools like Sigma, YARA, and Zeek. This involves analysing network traffic, system logs, and memory dumps for signs of malicious activity. You might also develop custom threat hunting strategies for Advanced Persistent Threats (APTs) and collaborate to refine techniques.
+
+◦ Skills Developed: Proactive threat detection and analytical skills.
 
 
 ### Firewall Rule Auditing and Network Security Monitoring:
@@ -109,59 +112,66 @@ These projects involve tackling more complex challenges and utilising cutting-ed
 ◦ Skills Developed: Automation in a SOC environment, faster threat response.
 
 ### Red Team vs. Blue Team Simulation:
+
 ◦ What you'll do: This challenging project involves simulating attacks (Red Team) using tools like Metasploit, Cobalt Strike, or Kali Linux. Then, you switch roles to become the defender (Blue Team), using tools such as Splunk, Wireshark, and EDR solutions to detect, analyse, and mitigate these simulated attacks. The process includes documenting detailed incident reports and post-simulation analyses to learn from each scenario, fostering collaboration to refine attack and defence strategies.
+
 ◦ Skills Developed: Ability to think like both an attacker and a defender, technical proficiency in offensive and defensive tools.
 
 ### Creating Custom SIEM Use Cases and Correlation Rules:
+
 ◦ What you'll do: Identify common attack patterns (e.g., lateral movement, data exfiltration, privilege escalation) and build SIEM use cases to detect them. This involves writing custom correlation rules within your SIEM tool (Splunk, QRadar, or Elastic SIEM) to automatically alert on suspicious activity. You would also design intuitive dashboards to visualise security events for easier trend and anomaly spotting, and continuously refine these rules to reduce false positives.
+
 ◦ Skills Developed: Fine-tuning security monitoring systems for precise threat detection.
 
 ### Advanced Threat Intelligence Analysis with OSINT:
+ 
 ◦ What you'll do: Deepen your understanding of threat actors by leveraging powerful OSINT tools like Maltego, SpiderFoot, and FOCA to collect data from public sources. This includes investigating how different threat actors operate, their attack vectors, and historical trends. The project culminates in building comprehensive threat intelligence reports to guide organisational defensive strategies and feeding these OSINT findings into SIEM systems to enhance overall threat detection.
+
 ◦ Skills Developed: In-depth threat intelligence, tracking emerging threats using publicly available data.
+
 
 ## Day in the life
 
 A Day in the Life of a SOC Analyst: A 9-to-5 Simulation
-9:00 AM - 9:30 AM: Shift Handoff & Initial Briefing The day begins with a shift handoff from the previous team. The SOC Analyst reviews any ongoing incidents, critical alerts, and significant findings from the past 24 hours. This initial briefing ensures a seamless transition and continuous vigilance, ensuring minimal downtime and business continuity. They might review high-level dashboards in their Security Information and Event Management (SIEM) platform (e.g., Splunk, IBM QRadar, or Elastic SIEM) to get a quick overview of the network's security posture.
-9:30 AM - 12:00 PM: Proactive Monitoring & Alert Triage (Tier 1 Focus) As a Tier 1 analyst, the primary responsibility is to monitor and respond to security alerts, serving as the initial line of defence against detected threats. This involves constantly reviewing the output of security monitoring and detection tools.
-•
-SIEM Monitoring: The analyst spends a significant portion of this time actively monitoring the SIEM console. They look for suspicious activities like multiple failed logins, unusual network traffic, or unexpected data transfers. SIEM tools help by aggregating and correlating log data from various systems like servers, firewalls, and endpoints.
-•
-Initial Triage: When an alert is triggered, the analyst performs a preliminary incident assessment to gauge its authenticity and immediacy. They might use automated alerts to quickly identify suspicious activities.
-•
-Tool Checks: They also perform daily health checks on other essential security tools, such as Endpoint Detection and Response (EDR) tools (e.g., CrowdStrike, Carbon Black, SentinelOne) which monitor individual devices for suspicious behaviour, and Intrusion Detection/Prevention Systems (IDS/IPS) like Snort or Suricata, which monitor network traffic for malicious patterns.
 
-12:00 PM - 1:00 PM: Lunch Break
+**9:00 AM - 9:30 AM:** Shift Handoff & Initial Briefing The day begins with a shift handoff from the previous team. The SOC Analyst reviews any ongoing incidents, critical alerts, and significant findings from the past 24 hours. This initial briefing ensures a seamless transition and continuous vigilance, ensuring minimal downtime and business continuity. They might review high-level dashboards in their Security Information and Event Management (SIEM) platform (e.g., Splunk, IBM QRadar, or Elastic SIEM) to get a quick overview of the network's security posture.
 
-1:00 PM - 3:00 PM: Incident Investigation & Threat Intelligence (Tier 2 Focus) After lunch, the focus shifts to deeper investigation, often for incidents escalated from Tier 1, or for complex issues that require more exhaustive scrutiny.
-•
-Detailed Investigation: The analyst delves into substantiated security incidents, using threat intelligence and forensic methodologies to understand the breadth and ramifications of the threat. This might involve:
-◦
-Packet Capture and Analysis: Using Wireshark to inspect network packets and analyse protocols (TCP, UDP, HTTP) to identify anomalies like unexpected data transfers or port scans.
-◦
-Log Forensics: Analysing Windows Event Logs for failed logins, account lockouts, or unauthorised access, and Linux Syslogs for suspicious commands or unusual user activity. They might also examine more detailed Sysmon logs for deeper visibility into system activity on Windows.
-◦
-Endpoint Data Analysis: Leveraging EDR tools for deeper visibility into endpoints, helping to quickly identify potential security breaches and prevent malware infections. They might also use tools from the Sysinternals Suite (e.g., Process Explorer, Autoruns) to understand system activity and identify persistence mechanisms.
-•
-Threat Intelligence Integration: The analyst consults Threat Intelligence Platforms (TIPs) such as VirusTotal, AlienVault OTX, or MISP to collect and analyse data about current and emerging cyber threats, extracting Indicators of Compromise (IOCs) like malicious IPs, domains, and file hashes. This provides valuable insights and context to the ongoing investigation.
-•
-Collaboration: They engage in close collaboration with fellow security personnel and relevant stakeholders across departments to orchestrate a unified response to security breaches.
-3:00 PM - 5:00 PM: Proactive Security & Continuous Improvement (Tier 3 / Advanced Focus) The late afternoon may involve more proactive, strategic tasks, typically handled by Tier 3 or more experienced analysts, but also contributing to the overall security posture.
-•
-Threat Hunting: Proactively searching for hidden threats using tools like Sigma, YARA, and Zeek by analysing network traffic, system logs, and memory dumps for signs of malicious activity. This might include developing custom threat hunting strategies for Advanced Persistent Threats (APTs).
-•
-Firewall Rule Auditing: Reviewing and analysing firewall configurations (e.g., pfSense, Fortinet, Palo Alto) to identify misconfigurations or outdated rules and optimising security settings. Firewalls are critical for protecting systems from unauthorised access.
-•
-SIEM Optimisation: Creating custom SIEM use cases and correlation rules to detect specific attack patterns such as lateral movement or data exfiltration. They also design intuitive dashboards to visualise security events and continuously refine these rules to reduce false positives.
-•
-Automation & Scripting: Contributing to or developing automation workflows using Security Orchestration, Automation, and Response (SOAR) platforms like Cortex XSOAR or Splunk Phantom. This helps to automate repetitive tasks in incident response workflows and integrate multiple security tools.
-•
-Documentation & Reporting: Finalising detailed incident reports that outline the timeline, impact, and remediation steps for incidents investigated earlier. They also assess and report on cybersecurity procedures to senior management (e.g., CTO, CIO, CISO).
-•
-Continuous Learning: Staying abreast of emerging cyber trends, vulnerabilities, and novel technologies is imperative for SOC Analysts. This could involve reviewing industry news, participating in online communities, or studying for advanced certifications.
-•
-Shift Handoff Preparation: Preparing a comprehensive overview of the day's activities, any remaining open alerts, and critical information for the incoming shift to maintain continuous operations and effective threat detection.
+**9:30 AM - 12:00 PM:** Proactive Monitoring & Alert Triage (Tier 1 Focus) As a Tier 1 analyst, the primary responsibility is to monitor and respond to security alerts, serving as the initial line of defence against detected threats. This involves constantly reviewing the output of security monitoring and detection tools.
+
+• SIEM Monitoring: The analyst spends a significant portion of this time actively monitoring the SIEM console. They look for suspicious activities like multiple failed logins, unusual network traffic, or unexpected data transfers. SIEM tools help by aggregating and correlating log data from various systems like servers, firewalls, and endpoints.
+
+• Initial Triage: When an alert is triggered, the analyst performs a preliminary incident assessment to gauge its authenticity and immediacy. They might use automated alerts to quickly identify suspicious activities.
+
+• Tool Checks: They also perform daily health checks on other essential security tools, such as Endpoint Detection and Response (EDR) tools (e.g., CrowdStrike, Carbon Black, SentinelOne) which monitor individual devices for suspicious behaviour, and Intrusion Detection/Prevention Systems (IDS/IPS) like Snort or Suricata, which monitor network traffic for malicious patterns.
+
+**12:00 PM - 1:00 PM:** Lunch Break
+
+**1:00 PM - 3:00 PM:** Incident Investigation & Threat Intelligence (Tier 2 Focus) After lunch, the focus shifts to deeper investigation, often for incidents escalated from Tier 1, or for complex issues that require more exhaustive scrutiny.
+
+• Detailed Investigation: The analyst delves into substantiated security incidents, using threat intelligence and forensic methodologies to understand the breadth and ramifications of the threat. This might involve:
+
+- Packet Capture and Analysis: Using Wireshark to inspect network packets and analyse protocols (TCP, UDP, HTTP) to identify anomalies like unexpected data transfers or port scans.
+- Log Forensics: Analysing Windows Event Logs for failed logins, account lockouts, or unauthorised access, and Linux Syslogs for suspicious commands or unusual user activity. They might also examine more detailed Sysmon logs for deeper visibility into system activity on Windows.
+- Endpoint Data Analysis: Leveraging EDR tools for deeper visibility into endpoints, helping to quickly identify potential security breaches and prevent malware infections. They might also use tools from the Sysinternals Suite (e.g., Process Explorer, Autoruns) to understand system activity and identify persistence mechanisms.
+- Threat Intelligence Integration: The analyst consults Threat Intelligence Platforms (TIPs) such as VirusTotal, AlienVault OTX, or MISP to collect and analyse data about current and emerging cyber threats, extracting Indicators of Compromise (IOCs) like malicious IPs, domains, and file hashes. This provides valuable insights and context to the ongoing investigation.
+
+• Collaboration: They engage in close collaboration with fellow security personnel and relevant stakeholders across departments to orchestrate a unified response to security breaches.
+
+**3:00 PM - 5:00 PM:** Proactive Security & Continuous Improvement (Tier 3 / Advanced Focus) The late afternoon may involve more proactive, strategic tasks, typically handled by Tier 3 or more experienced analysts, but also contributing to the overall security posture.
+
+• Threat Hunting: Proactively searching for hidden threats using tools like Sigma, YARA, and Zeek by analysing network traffic, system logs, and memory dumps for signs of malicious activity. This might include developing custom threat hunting strategies for Advanced Persistent Threats (APTs).
+
+• Firewall Rule Auditing: Reviewing and analysing firewall configurations (e.g., pfSense, Fortinet, Palo Alto) to identify misconfigurations or outdated rules and optimising security settings. Firewalls are critical for protecting systems from unauthorised access.
+
+• SIEM Optimisation: Creating custom SIEM use cases and correlation rules to detect specific attack patterns such as lateral movement or data exfiltration. They also design intuitive dashboards to visualise security events and continuously refine these rules to reduce false positives.
+
+• Automation & Scripting: Contributing to or developing automation workflows using Security Orchestration, Automation, and Response (SOAR) platforms like Cortex XSOAR or Splunk Phantom. This helps to automate repetitive tasks in incident response workflows and integrate multiple security tools.
+
+• Documentation & Reporting: Finalising detailed incident reports that outline the timeline, impact, and remediation steps for incidents investigated earlier. They also assess and report on cybersecurity procedures to senior management (e.g., CTO, CIO, CISO).
+
+• Continuous Learning: Staying abreast of emerging cyber trends, vulnerabilities, and novel technologies is imperative for SOC Analysts. This could involve reviewing industry news, participating in online communities, or studying for advanced certifications.
+
+• Shift Handoff Preparation: Preparing a comprehensive overview of the day's activities, any remaining open alerts, and critical information for the incoming shift to maintain continuous operations and effective threat detection.
 This simulates a dynamic workday for a SOC Analyst, highlighting their crucial role in monitoring, detecting, analysing, and responding to security incidents using a variety of essential tools and technologies
 
 ## Related Resources
