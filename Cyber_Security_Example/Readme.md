@@ -24,7 +24,7 @@ A **Security Operations Centre (SOC) Analyst** is a crucial frontline profession
 
 - **Staying Current:** Given the constant evolution of cyber threats, SOC analysts must stay updated on emerging cyber trends and advancements in IT and security
 
-![SOC Analyst Responsibilities Skill Background Salary](soc-analyst-responsibilities-skill-background-salary.jpg)
+![SOC Analyst Responsibilities Skill Background Salary](soc-analyst-responsibilities-skill-background-salary.JPG)
 
 ## SOC Analyst Tech Stacks or Frameworks
 
