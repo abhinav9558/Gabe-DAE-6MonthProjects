@@ -20,9 +20,12 @@
 Microsoft Certified: Security Operations Analyst Associate
 https://learn.microsoft.com/en-us/credentials/certifications/security-operations-analyst/?practice-assessment-type=certification
 
+https://www.cybrary.it
+
 Main Project: Simulated SOC Incident Response & Analysis Lab
 This project simulates a real-world cyber incident within a controlled environment, allowing you to demonstrate your capabilities across several critical SOC functions. Goal: To detect, analyse, and respond to a simulated cyberattack within a small, self-built network, documenting every step. Approximate Time Allocation: Dedicate the majority of your 1-3 months (e.g., 60-70% of your time) to this comprehensive project.
-Steps and Key Learnings:
+
+**Steps and Key Learnings:**
 
 1. **Environment Setup (Foundational, ~1-2 weeks):**
 
