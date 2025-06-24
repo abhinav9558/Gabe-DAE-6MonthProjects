@@ -1,10 +1,7 @@
 
 
-original_list = [ 3 , 1 , 9  ]
+original_list = [7, 2, 9, 4, 1, 8, 5, 10, 3, 6]
 
-def sorting_numbers():
-
-sorted_list = []
-for sorted_list in original_list:
+def sort_num():
 
     
