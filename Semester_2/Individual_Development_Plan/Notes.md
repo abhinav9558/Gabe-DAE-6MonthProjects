@@ -8,7 +8,7 @@
 
 ### Tues (06/24)
 
-- Peerback / LinkedIN Profile
+- Peerback / LinkedIN Profile / GitHub Pages
 
 ### Wedns (06/25)
 
