@@ -1,6 +1,11 @@
 # DAE Semester 2
 
+- Add job description to readme.md
+- Add flow diagram to version control document
+- Add future projects to monday.com
+- Add daily deliverables to my current project on monday.com
 
+- Add links to my github pages, linkedin, and resume for presentation
 
 
 ### Week 6/16
