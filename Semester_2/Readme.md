@@ -1,26 +1,19 @@
 # DAE Semester 2
 
+- Projects are in deadline 
+- Add monday.com deadliens for each project
+- Link Resume, Linkdn, GIthub Pages in readme.md
 
+- Be definite in my IDP plan, concise smart goal (remove steps)
 
+Expectation Deliverables: 
+- Algorithms
+- Build another page in github pages
+- showcase a resource in github pages
 
-### Week 6/16
+## SOC Analyst Job Description
 
-**Outcomes For The Week**
-
-- Monday (6/16) - Ideas for project plans based on design constraints
-
-- Tues (6/17) - First draft of project plans
-
-- Wedns (6/18) - Project Schedule outlined and in Monday.com
-
-- Thurs (6/19) - Finalized Project Plans
-
-### Useful Links
-
-Microsoft Certified: Security Operations Analyst Associate
-https://learn.microsoft.com/en-us/credentials/certifications/security-operations-analyst/?practice-assessment-type=certification
-
-https://www.cybrary.it
+A **Security Operations Centre (SOC) Analyst** is a crucial frontline professional responsible for monitoring, detecting, analysing, and swiftly responding to cyber threats to safeguard an organisation's networks and valuable data.
 
 Main Project: Simulated SOC Incident Response & Analysis Lab
 This project simulates a real-world cyber incident within a controlled environment, allowing you to demonstrate your capabilities across several critical SOC functions. Goal: To detect, analyse, and respond to a simulated cyberattack within a small, self-built network, documenting every step. Approximate Time Allocation: Dedicate the majority of your 1-3 months (e.g., 60-70% of your time) to this comprehensive project.
@@ -94,3 +87,10 @@ To ensure your projects stand out and effectively showcase your "introspective" 
 - Build a Cybersecurity Portfolio: Host your project documentation (e.g., on GitHub Pages, a personal website, or a blog). This acts as a digital resume where your work speaks for itself. Include a link to this portfolio on your actual resume.
 
 - Networking: Share your projects with industry professionals through online communities or by attending virtual or in-person cybersecurity events. This can lead to valuable feedback, mentorship, and even job opportunities. Given your quiet nature, online forums and dedicated career sites like Dice or NinjaJobs that specialise in cybersecurity roles might be a good starting point
+
+### Useful Links
+
+Microsoft Certified: Security Operations Analyst Associate
+https://learn.microsoft.com/en-us/credentials/certifications/security-operations-analyst/?practice-assessment-type=certification
+
+https://www.cybrary.it
