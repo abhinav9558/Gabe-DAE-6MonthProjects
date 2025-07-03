@@ -1,7 +1,7 @@
 # Welcome to my Portfolio
 
 <p align="center">
-  <img src="/assets/Headshot.jpg" alt="My photo" width="300">
+  <img src="assets/Headshot.jpg" alt="My photo" width="300">
 </p>
 
 ## About Me
