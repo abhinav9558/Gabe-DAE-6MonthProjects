@@ -1,5 +1,6 @@
 
 
+## SOC Job Description
 
 A **Security Operations Centre (SOC) Analyst** is a crucial frontline professional responsible for monitoring, detecting, analysing, and swiftly responding to cyber threats to safeguard an organisation's networks and valuable data. 
 
