@@ -1,19 +1,10 @@
 # DAE Semester 2
 
-<<<<<<< HEAD
 - Projects are in deadline 
 - Add monday.com deadliens for each project
 - Link Resume, Linkdn, GIthub Pages in readme.md
 
 - Be definite in my IDP plan, concise smart goal (remove steps)
-=======
-- Add job description to readme.md
-- Add flow diagram to version control document
-- Add future projects to monday.com
-- Add daily deliverables to my current project on monday.com
-
-- Add links to my github pages, linkedin, and resume for presentation
->>>>>>> e339b7dc246271c89e7cc5a39d4970e884c240b8
 
 Expectation Deliverables: 
 - Algorithms

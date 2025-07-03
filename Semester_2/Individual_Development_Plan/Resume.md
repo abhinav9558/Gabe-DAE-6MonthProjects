@@ -74,4 +74,3 @@ Main responsibility was making sure that the individual clients that were signed
 
 - Programming languages such as Python, SQL, Java, HTML, CSS
 - Well versed in leading, planning, budgeting and managing projects.
-- 
