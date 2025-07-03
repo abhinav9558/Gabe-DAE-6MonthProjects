@@ -1,10 +1,10 @@
 # DAE Semester 2
 
-Professional Links
+## Professional Links
 
 [Github](https://github.com/AntoTheSol/DAE-6MonthProjects)
 [LinkedIn](https://www.linkedin.com/in/gabriel-z-757404aa/)
-[Resume](/Docs/Assets/Resume-Nov23.pdf)
+[Resume](docs/Assets/Resume-Nov23.pdf)
 
 
 ## SOC Analyst Job Description
