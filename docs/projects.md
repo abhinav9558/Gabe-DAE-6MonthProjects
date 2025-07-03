@@ -6,8 +6,8 @@ title: Projects
 
 ## Project 1
 
-## Contact Me
+## Repository
 
-    - [Github](https://github.com/AntoTheSol/DAE-6MonthProjects)
+    - [Github]("https://github.com/AntoTheSol/DAE-6MonthProjects")
 
-[View my Projects](projects.md)
+[Return to Home](./index.md)

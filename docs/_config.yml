@@ -5,6 +5,7 @@ theme: minima
 header_pages:
   - index.md
   - projects.md
+  - resume_draft.md
 
 author:
   name: Gabriel   
