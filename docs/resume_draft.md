@@ -3,7 +3,10 @@ layout: default
 title: Resume
 ---
 
-Gabriel ZepedaStamford CTgabriel.Zepeda94@gmail.com · https://www.linkedin.com/in/gabriel-z-757404aa/
+Gabriel Zepeda
+Stamford CT
+· gabriel.Zepeda94@gmail.com 
+· https://www.linkedin.com/in/gabriel-z-757404aa/
 
 # Professional Summary
 

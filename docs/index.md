@@ -1,8 +1,7 @@
 # Welcome to my Portfolio
 
-<p align="center">
-  <img src="/assests/Headshot.jpg" width="300" alt="My Photo">
-</p>
+
+![My photo](/assets/Headshot.jpg)
 
 
 ## Contact Me
