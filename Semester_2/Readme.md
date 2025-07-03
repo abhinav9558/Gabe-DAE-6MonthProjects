@@ -1,10 +1,18 @@
 # DAE Semester 2
 
+Professional Links
+
+[Github](https://github.com/AntoTheSol/DAE-6MonthProjects)
+[LinkedIn](https://www.linkedin.com/in/gabriel-z-757404aa/)
+[Resume](/Docs/Assets/Resume-Nov23.pdf)
+
+
 ## SOC Analyst Job Description
 
 A **Security Operations Centre (SOC) Analyst** is a crucial frontline professional responsible for monitoring, detecting, analysing, and swiftly responding to cyber threats to safeguard an organisation's networks and valuable data.
 
 Main Project: Simulated SOC Incident Response & Analysis Lab
+
 This project simulates a real-world cyber incident within a controlled environment, allowing you to demonstrate your capabilities across several critical SOC functions. Goal: To detect, analyse, and respond to a simulated cyberattack within a small, self-built network, documenting every step. Approximate Time Allocation: Dedicate the majority of your 1-3 months (e.g., 60-70% of your time) to this comprehensive project.
 
 **Steps and Key Learnings:**
