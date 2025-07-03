@@ -3,8 +3,9 @@
 ## Professional Links
 
 [Github](https://github.com/AntoTheSol/DAE-6MonthProjects)
+[GitHub-Pages](https://antothesol.github.io/DAE-6MonthProjects/)
 [LinkedIn](https://www.linkedin.com/in/gabriel-z-757404aa/)
-[Resume](docs/Assets/Resume-Nov23.pdf)
+[Resume](https://antothesol.github.io/DAE-6MonthProjects/resume_draft.html)
 
 
 ## SOC Analyst Job Description
