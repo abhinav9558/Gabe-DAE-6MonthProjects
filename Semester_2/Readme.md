@@ -1,16 +1,5 @@
 # DAE Semester 2
 
-- Projects are in deadline 
-- Add monday.com deadliens for each project
-- Link Resume, Linkdn, GIthub Pages in readme.md
-
-- Be definite in my IDP plan, concise smart goal (remove steps)
-
-Expectation Deliverables: 
-- Algorithms
-- Build another page in github pages
-- showcase a resource in github pages
-
 ## SOC Analyst Job Description
 
 A **Security Operations Centre (SOC) Analyst** is a crucial frontline professional responsible for monitoring, detecting, analysing, and swiftly responding to cyber threats to safeguard an organisation's networks and valuable data.
