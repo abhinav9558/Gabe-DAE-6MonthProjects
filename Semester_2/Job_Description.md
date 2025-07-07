@@ -41,7 +41,7 @@ A **Security Operations Centre (SOC) Analyst** is a crucial frontline profession
 
 - Log Analysis & Forensic Reports: Deep-dive reports from investigating suspicious activity.
 
-# Ideal Work Environment Description or Company Type
+## Ideal Work Environment Description or Company Type
 
 As a work environment it is important to always have a strong team dynamic and collaboration, or else when it comes to the security of the company you are trying to secure if one minor thing is not communicated it can be mean absolute disaster and data breach. As long each team member is able to properly communicate any issues on a day to day basis and the managers are able to properly delegate then it should be a great success in all areas.
 
@@ -49,7 +49,7 @@ one example of a work environment is with bank of America where yes team work is
 
 Another example is SecureWorks which is a, Managed Security Service Provider (MSSP), which is a more high paced, and high volume environment often with multiple 24/7 shift rotations. There is a very strict Service Level Agreements (SLAs) for incident response but the SIEM software might be less customized for the institution.
 
-# Work Rigor and Growth Style
+## Work Rigor and Growth Style
 
 There are many types of work rigors and styles, a low rigor might be government jobs where the infrastrucre is more stable with lower incident volume. Also few false positives and longer timelines yet the growth is more vertical in nature.
 
