@@ -1,4 +1,7 @@
-# Welcome to my Portfolio
+---
+layout: default
+title: Portfolio
+---
 
 <p align="center">
   <img src="assets/Headshot.jpg" alt="My photo" width="300">
