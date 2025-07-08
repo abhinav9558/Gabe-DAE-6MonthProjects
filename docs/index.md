@@ -15,7 +15,7 @@ Hey nice to meet you visitors, I'm Gabe and I'm studying Cyber Security specifca
 
 [Github](https://github.com/AntoTheSol/DAE-6MonthProjects)
 [LinkedIn](https://www.linkedin.com/in/gabriel-z-757404aa/)
-[Resume](docs/assets/Resume-Nov23.pdf)
+[Resume](https://github.com/AntoTheSol/DAE-6MonthProjects/blob/main/docs/assets/Resume-Nov23.pdf)
 
 
 [Return to Home](./index.md)
