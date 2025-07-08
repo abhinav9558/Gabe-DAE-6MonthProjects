@@ -9,12 +9,12 @@
     - VirusTotal **or** Any.Run / Hybrid Analysis
   - [ ] Document:
     - [x] Detection results  
-    - [ ] Behavioral indicators  
-    - [ ] Potential impact  
+    - [x] Behavioral indicators  
+    - [x] Potential impact  
 
 - [ ] **Phishing Simulation**
-  - [ ] Create 1 phishing template using Social Engineering Toolkit (SET)
-  - [ ] Environment: Kali Linux or Parrot OS
+  - [x] Create 1 phishing template using Social Engineering Toolkit (SET)
+  - [X] Environment: Kali Linux or Parrot OS
 
 - [ ] **APT Campaign Mapping**
   - [ ] Map 1 real-world APT campaign to MITRE ATT&CK framework
@@ -28,3 +28,90 @@ https://www.virustotal.com/gui/file/8301936f439f43579cffe98e11e3224051e2fb890ffe
 
 ### Cape Sandbox Behavior Analysis
 https://www.capesandbox.com/analysis/13533/
+
+
+# Comprehensive Malware Analysis Report
+
+**File SHA-256:** `8301936f439f43579cffe98e11e3224051e2fb890ffe9df680bbbd8db0729387`
+
+---
+
+## Detection Results
+
+### VirusTotal
+
+- **Detection Rate:** 10 / 70 antivirus engines flagged the file.
+- **Notable Detections:**
+  - `Trojan:Win32/Emotet`
+  - `Trojan.GenericKD.48805871`
+  - `W32/Emotet.B.gen!Eldorado`
+
+> These detections suggest association with the Emotet malware family, known for distributing other malware and spam campaigns.
+
+---
+
+## Behavioral Indicators
+
+### VirusTotal
+
+- **Network Activity:** Attempts to establish connections with remote servers, often for command and control purposes.
+- **Persistence Mechanisms:** Modifies system settings to ensure it remains active after system reboots.
+- **Payload Delivery:** Downloads and executes additional malicious payloads, such as ransomware or information stealers.
+- **Email Propagation:** Spreads via malicious email attachments or links, often masquerading as legitimate documents.
+
+### CAPE Sandbox
+
+- **Execution Behavior:** The file was executed in a controlled environment to observe its behavior.
+- **Network Activity:** Established connections to external servers, indicating potential command and control communication.
+- **File System Changes:** Created or modified files in system directories, suggesting attempts to maintain persistence.
+- **Registry Modifications:** Altered registry keys to ensure execution on system startup.
+
+> These behaviors align with typical characteristics of the Emotet malware family.
+
+---
+
+## Potential Impact
+
+- **Data Theft:** Harvests sensitive information, including login credentials and personal data.
+- **System Compromise:** Creates backdoors, allowing attackers to gain unauthorized access to the infected system.
+- **Lateral Movement:** Once inside a network, Emotet can spread to other systems, increasing the scope of the attack.
+- **Financial Loss:** Facilitates the delivery of other malicious payloads, leading to significant financial losses through fraud or data breaches.
+
+---
+
+## Recommendations
+
+- **Immediate Action:** If this file is detected on your system, isolate the affected machine to prevent further spread.
+- **Antivirus Scan:** Run a full system scan using reputable antivirus software to detect and remove any associated threats.
+- **Update Systems:** Ensure that all software, including the operating system and applications, are up to date with the latest security patches.
+- **Monitor Network Traffic:** Look for unusual outbound connections that may indicate communication with malicious servers.
+- **User Awareness:** Educate users about the dangers of opening unsolicited email attachments or clicking on unknown links.
+
+---
+
+If you need further assistance or have specific questions about this file, feel free to ask.
+
+
+### APT Campaign Mapping*
+
+🎯 1. MintsLoader
+
+A cybercriminal loader-as-a-service group that distributes payloads via compromised websites, typosquatted domains, malicious ads, and phishing-like campaigns.
+Notably, they've deployed StealC as part of their malware payloads in PPI (pay‑per‑install) schemes 
+misp-galaxy.org
+
+
+🎯 2. “Tusk” (Russian-speaking cybercriminal cluster)
+
+This group operates a multifaceted info‑stealer campaign using social-engineered phishing sites impersonating brands, game launchers, etc.
+Its multi‑stage downloader infrastructure has delivered StealC alongside other stealers like DanaBot 
+
+Initial Access → Phishing (T1566)
+Execution and Persistence → Fileless loaders
+Credential Access → StealC behavior
+
+Map their techniques using ATT&CK TIDs:
+T1566 – Phishing
+T1204 – User Execution
+T1003 – Credential Access
+T1071/T1041 – C2 & Exfiltration

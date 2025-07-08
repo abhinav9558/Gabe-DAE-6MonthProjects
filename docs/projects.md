@@ -8,6 +8,6 @@ title: Projects
 
 ## Repository
 
-    - [Github](https://github.com/AntoTheSol/DAE-6MonthProjects)
+- [Github](https://github.com/AntoTheSol/DAE-6MonthProjects)
 
 [Return to Home](./index.md)
