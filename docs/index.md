@@ -4,7 +4,8 @@ title: Portfolio
 ---
 
 <p align="center">
-  <img src="assets/Headshot.jpg" alt="My photo" width="300">
+  <img src="assets/Headshot2.jpg" alt="My photo" width="300">
+  <figcaption style="text-align:center;">CEO of Boss Inc.</figcaption>
 </p>
 
 ## About Me
