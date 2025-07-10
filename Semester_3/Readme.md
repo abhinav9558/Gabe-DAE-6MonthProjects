@@ -115,3 +115,24 @@ T1566 – Phishing
 T1204 – User Execution
 T1003 – Credential Access
 T1071/T1041 – C2 & Exfiltration
+
+
+### 🛠️ 2. Apply Vulnerability Assessment Techniques
+
+- [ ] **Vulnerability Scan**
+  - [ ] Conduct scan using Nmap or OpenVAS
+  - [ ] Document:
+    - [ ] Scan configuration
+    - [ ] Summary of findings
+    - [ ] Vulnerability classification
+
+- [ ] **Asset Discovery**
+  - [ ] Perform asset discovery scan
+  - [ ] Document:
+    - [ ] Discovered systems and services
+    - [ ] Critical asset identification
+    - [ ] Basic network mapping
+
+- [ ] **Documentation**
+  - [ ] Explain methodology used
+  - [ ] Describe potential security implications
