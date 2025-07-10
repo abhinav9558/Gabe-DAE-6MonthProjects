@@ -4,7 +4,7 @@
 
 ### 🔍 1. Identify and Analyze Cyber Threats
 
-- [ ] **Malware Analysis**
+- [X] **Malware Analysis**
   - [x] Analyze a malware sample using:
     - VirusTotal **or** Any.Run / Hybrid Analysis
   - [ ] Document:
@@ -12,12 +12,12 @@
     - [x] Behavioral indicators  
     - [x] Potential impact  
 
-- [ ] **Phishing Simulation**
+- [X] **Phishing Simulation**
   - [x] Create 1 phishing template using Social Engineering Toolkit (SET)
   - [X] Environment: Kali Linux or Parrot OS
 
-- [ ] **APT Campaign Mapping**
-  - [ ] Map 1 real-world APT campaign to MITRE ATT&CK framework
+- [X] **APT Campaign Mapping**
+  - [X] Map 1 real-world APT campaign to MITRE ATT&CK framework
 
 
 ### StealC Malware Samples
