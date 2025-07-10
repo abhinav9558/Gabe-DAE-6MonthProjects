@@ -7,7 +7,7 @@
 - [X] **Malware Analysis**
   - [x] Analyze a malware sample using:
     - VirusTotal **or** Any.Run / Hybrid Analysis
-  - [ ] Document:
+  - [X] Document:
     - [x] Detection results  
     - [x] Behavioral indicators  
     - [x] Potential impact  
@@ -89,7 +89,9 @@ https://www.capesandbox.com/analysis/13533/
 
 ---
 
-If you need further assistance or have specific questions about this file, feel free to ask.
+## **Phishing Simulation**
+
+[Phishing Simulation Login Tool](Semester_3)
 
 
 ### APT Campaign Mapping*
@@ -136,3 +138,21 @@ T1071/T1041 – C2 & Exfiltration
 - [ ] **Documentation**
   - [ ] Explain methodology used
   - [ ] Describe potential security implications
+
+
+### 🧠 3. Implement Threat Intelligence Principles
+
+- [ ] **IoC Analysis**
+  - [ ] Analyze 2 Indicators of Compromise (IoCs)
+  - [ ] Document:
+    - [ ] Detection methods
+    - [ ] Threat indicators
+
+- [ ] **OpenCTI Setup**
+  - [ ] Install OpenCTI using Docker or native system
+  - [ ] Configure at least 2 connectors
+  - [ ] Document:
+    - [ ] Platform setup
+    - [ ] Connector integration
+    - [ ] Basic usage demonstration
+    - [ ] Screenshots or logs showing functionality
