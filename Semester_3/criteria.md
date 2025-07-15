@@ -140,9 +140,9 @@ T1071/T1041 – C2 & Exfiltration
 ### 🛠️ 2. Apply Vulnerability Assessment Techniques
 
 - [ ] **Vulnerability Scan**
-  - [ ] Conduct scan using Nmap or OpenVAS
-  - [ ] Document:
-    - [ ] Scan configuration
+  - [x] Conduct scan using Nmap or OpenVAS
+  - [x] Document:
+    - [x] Scan configuration
     - [ ] Summary of findings
     - [ ] Vulnerability classification
 
@@ -156,7 +156,6 @@ T1071/T1041 – C2 & Exfiltration
 - [ ] **Documentation**
   - [ ] Explain methodology used
   - [ ] Describe potential security implications
-
 
 ### 🧠 3. Implement Threat Intelligence Principles
 

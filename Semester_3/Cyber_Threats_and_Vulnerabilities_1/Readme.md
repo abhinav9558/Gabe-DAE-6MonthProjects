@@ -139,23 +139,110 @@ T1071/T1041 – C2 & Exfiltration
 
 ### 🛠️ 2. Apply Vulnerability Assessment Techniques
 
-- [ ] **Vulnerability Scan**
-  - [ ] Conduct scan using Nmap or OpenVAS
-  - [ ] Document:
-    - [ ] Scan configuration
-    - [ ] Summary of findings
-    - [ ] Vulnerability classification
+- [x] **Vulnerability Scan**
+  - [x] Conduct scan using Nmap or OpenVAS
+  - [x] Document:
+    - [x] Scan configuration
+    - [x] Summary of findings
+    - [x] Vulnerability classification
 
 - [ ] **Asset Discovery**
-  - [ ] Perform asset discovery scan
-  - [ ] Document:
-    - [ ] Discovered systems and services
-    - [ ] Critical asset identification
+  - [x] Perform asset discovery scan
+  - [x] Document:
+    - [x] Discovered systems and services
+    - [x] Critical asset identification
     - [ ] Basic network mapping
 
 - [ ] **Documentation**
-  - [ ] Explain methodology used
-  - [ ] Describe potential security implications
+  - [x] Explain methodology used
+  - [x] Describe potential security implications
+
+  ### **Vulnerability Scan**
+
+# 🔎 Vulnerability Scan Report
+
+In ParrotOS Terminal `nmap -sC -sV 192.168.1.82`
+
+![nmap_1](nmap_1.png)
+
+
+In ParrotOS Terminal `nmap -sC -sV --script vuln 192.168.1.82`
+
+![Nmap Vulnerability Scan 1](nmap_vuln_1.png)
+![Nmap Vulnerability Scan 2](nmap_vuln_2.png)
+![Nmap Vulnerability Scan 3](nmap_vuln_3.png)
+![Nmap Vulnerability Scan 4](nmap_vuln_4.png)
+
+## ✅ Vulnerability Scan Summary
+
+### Target: `192.168.1.82`
+- **Service Detected:** DNS (`port 53`) running `dnsmasq 2.90`
+- **Status:** Open
+- **Vulnerability Findings:**
+  - Multiple known CVEs:
+    - `CVE-2017-14491` – Remote Code Execution via crafted DNS requests
+    - `CVE-2017-14493`, `CVE-2020-25682`, `CVE-2020-25683`, `CVE-2020-25684`, etc.
+  - High severity vulnerabilities with CVSS scores between **7.5 and 10.0**
+  - Public exploits available on:
+    - ExploitDB
+    - GitHub
+    - PacketStorm
+    - Vulners
+
+## 🗂 Vulnerability Classification
+
+| CVE / ID                      | CVSS Score | Description                                          | Exploit Available | Reference URL |
+|------------------------------|------------|------------------------------------------------------|-------------------|----------------|
+| CVE-2017-14491               | 9.8        | RCE via crafted DNS request                          | ✅                | https://vulners.com/cve/CVE-2017-14491 |
+| CVE-2017-14493               | 9.8        | DoS via malformed DNS                                | ✅                | https://vulners.com/cve/CVE-2017-14493 |
+| CVE-2017-14492               | 9.8        | Heap-based buffer overflow                           | ✅                | https://vulners.com/cve/CVE-2017-14492 |
+| CVE-2020-25682               | 8.3        | Buffer overflow in DNS query                         | ✅                | https://vulners.com/cve/CVE-2020-25682 |
+| CVE-2020-25683               | 8.1        | Integer underflow                                    | ✅                | https://vulners.com/cve/CVE-2020-25683 |
+| CVE-2020-25684               | 8.1        | Use-after-free vulnerability                         | ✅                | https://vulners.com/cve/CVE-2020-25684 |
+| CVE-2023-50387               | 7.5        | Response validation bypass                           | ✅                | https://vulners.com/cve/CVE-2023-50387 |
+| CVE-2023-49441               | 7.5        | DNS rebinding via cache mismanagement                | ✅                | https://vulners.com/cve/CVE-2023-49441 |
+| CVE-2023-28450               | 7.5        | Heap corruption vulnerability                        | ✅                | https://vulners.com/cve/CVE-2023-28450 |
+| CVE-2022-0934               | 7.5        | DNS packet parsing flaw                              | ✅                | https://vulners.com/cve/CVE-2022-0934 |
+| CVE-2019-14513              | 7.5        | Buffer write overflow                                | ✅                | https://vulners.com/cve/CVE-2019-14513 |
+| CVE-2017-15107              | 7.5        | Malformed query crash                                | ✅                | https://vulners.com/cve/CVE-2017-15107 |
+| CVE-2017-14495              | 7.5        | Memory disclosure vulnerability                      | ✅                | https://vulners.com/cve/CVE-2017-14495 |
+| CVE-2017-13704              | 7.5        | Invalid packet crash                                 | ✅                | https://vulners.com/cve/CVE-2017-13704 |
+| CVE-2015-8899               | 7.5        | Memory corruption flaw                               | ✅                | https://vulners.com/cve/CVE-2015-8899 |
+| CVE-2005-0877               | 7.5        | Old dnsmasq overflow                                 | ✅                | https://vulners.com/cve/CVE-2005-0877 |
+| CVE-2017-14496              | 7.8        | NULL pointer dereference                             | ✅                | https://vulners.com/cve/CVE-2017-14496 |
+| CVE-2013-0198               | 5.0        | DoS via crafted request                              | ✅                | https://vulners.com/cve/CVE-2013-0198 |
+| CVE-2012-3411               | 5.0        | Denial-of-service on malformed query                 | ✅                | https://vulners.com/cve/CVE-2012-3411 |
+| CVE-2009-2957               | 6.8        | DNS response overflow vulnerability                  | ✅                | https://vulners.com/cve/CVE-2009-2957 |
+| CVE-2021-3448               | 4.3        | Cache misconfiguration                               | ✅                | https://vulners.com/cve/CVE-2021-3448 |
+| CVE-2020-25685              | 4.3        | Misleading DNS response                              | ✅                | https://vulners.com/cve/CVE-2020-25685 |
+| CVE-2020-25686              | 4.3        | Faulty cache key handling                            | ✅                | https://vulners.com/cve/CVE-2020-25686 |
+| CVE-2019-14834              | 4.3        | Malformed packet DoS                                 | ✅                | https://vulners.com/cve/CVE-2019-14834 |
+| CVE-2009-2958               | 4.3        | Memory exhaustion via recursive query                | ✅                | https://vulners.com/cve/CVE-2009-2958 |
+
+> ✅ = Exploit publicly available
+
+---
+### Target: `demo.owasp-juice.shop`
+- **Service Detected:** Host up, no vulnerable services found
+- **Pre-scan Result:** 
+  - Avahi DoS check (`CVE-2011-1002`) — Not vulnerable
+
+---
+
+## 🌐 Asset Discovery Summary
+
+![Nmap Asset Discovery](nmap_sn_scan.png)
+
+### Network: `192.168.1.0/24`
+- **Live Hosts Detected:** 10+
+- **Discovered Devices:**
+  - 📱 `192.168.1.11` — iPhone (Apple)
+  - 📱 `192.168.1.17` — iPhone
+  - 💻 `192.168.1.19` — MacBook (`Romans-Air`)
+  - 💻 `192.168.1.56` — MacBook (`Jamess-MBP`)
+  - 🖥 `192.168.1.20` — Hewlett-Packard
+  - 🌐 `192.168.1.1` — Ubee Gateway
+  - ⚠️ `192.168.1.82` — Vulnerable DNS Host (`dnsmasq 2.90`)
 
 
 ### 🧠 3. Implement Threat Intelligence Principles
@@ -174,3 +261,123 @@ T1071/T1041 – C2 & Exfiltration
     - [ ] Connector integration
     - [ ] Basic usage demonstration
     - [ ] Screenshots or logs showing functionality
+
+### ⚠️ 4. Develop and Apply Risk Management Strategies
+
+- [ ] **Risk Identification**
+  - [ ] Identify 2 critical risks from vulnerability scan results
+  - [ ] Provide:
+    - [ ] Explanations
+    - [ ] Treatment recommendations
+    - [ ] Basic mitigation steps
+
+- [ ] **Risk Monitoring**
+  - [ ] Create 1 procedure for tracking identified risks
+
+- [ ] **Documentation**
+  - [ ] Justify decisions made
+  - [ ] Clearly present assessments and procedures
+
+---
+
+### 🛡️ 5. Implement Security Monitoring and Incident Response
+
+- [ ] **Security Monitoring**
+  - [ ] Setup basic monitoring use case
+  - [ ] Include:
+    - [ ] Detection rules
+    - [ ] Alert prioritization process
+    - [ ] Response procedures
+
+- [ ] **Incident Response**
+  - [ ] Simulate 1 incident response scenario
+  - [ ] Document:
+    - [ ] Incident classification
+    - [ ] Steps taken
+    - [ ] Lessons learned
+
+- [ ] **Evidence**
+  - [ ] Provide logs, screenshots, or config files to show functionality
+
+---
+
+# 🔐 Security Operations & Compliance Project
+
+This section documents key deliverables around security governance, encryption, incident response planning, and legal/ethical compliance as part of the SOC virtual lab project.
+
+---
+
+# Cybersecurity Basics 1 Project Submission
+
+## ✅ Criteria Breakdown & Deliverables
+
+### 🧯 1. Create an Incident Response Plan
+
+- [ ] **Detection**
+  - [ ] Describe at least 1 method used to detect a security incident  
+    _(e.g., SIEM alerts, IDS logs, unusual network behavior)_
+
+- [ ] **Containment**
+  - [ ] Outline 1 containment strategy  
+    _(e.g., isolating infected systems, disabling compromised accounts)_
+
+- [ ] **Eradication & Recovery**
+  - [ ] List steps to:
+    - [ ] Eradicate the threat  
+    - [ ] Recover system functionality
+
+- [ ] **Attack Type**
+  - [ ] Identify and explain **1 type** of cyberattack:
+    - Malware, Phishing, Ransomware, or Denial of Service (DoS)
+
+---
+
+### 📜 2. Develop a Comprehensive Security Policy
+
+- [ ] **Rules/Guidelines**
+  - [ ] Define at least **3 security rules or guidelines**
+    - _(e.g., password policies, access control, patch management)_
+
+- [ ] **Incident Response Plan**
+  - [ ] Include a step-by-step response plan for a security breach
+
+- [ ] **CIA Triad**
+  - [ ] Explain how the policy helps maintain:
+    - [ ] **Confidentiality**
+    - [ ] **Integrity**
+    - [ ] **Availability**
+
+---
+
+### 🔐 3. Apply Encryption Techniques
+
+- [ ] **Symmetric Encryption**
+  - [ ] Show an example of:
+    - [ ] Encrypted text (e.g., AES)
+    - [ ] Decrypted plain text using the same method
+
+- [ ] **Hashing**
+  - [ ] Hash a sample string using a standard algorithm:
+    - [ ] MD5 **or** SHA-1 / SHA-256
+
+---
+
+### ⚖️ 4. Demonstrate Legal and Ethical Compliance
+
+- [ ] **Legal Compliance**
+  - [ ] Identify **at least 2 relevant laws/regulations**, such as:
+    - HIPAA, GDPR, CCPA, FISMA, etc.
+  - [ ] Explain how your incident response plan addresses these laws
+
+- [ ] **Ethical Considerations**
+  - [ ] Discuss at least **1 ethical concern**, such as:
+    - Data privacy, responsible disclosure, user consent, etc.
+
+- [ ] **Alignment with Compliance**
+  - [ ] Explain how your plan supports:
+    - Legal obligations
+    - Ethical responsibilities
+
+---
+
+
