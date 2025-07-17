@@ -146,14 +146,14 @@ T1071/T1041 – C2 & Exfiltration
     - [x] Summary of findings
     - [x] Vulnerability classification
 
-- [ ] **Asset Discovery**
+- [x] **Asset Discovery**
   - [x] Perform asset discovery scan
   - [x] Document:
     - [x] Discovered systems and services
     - [x] Critical asset identification
-    - [ ] Basic network mapping
+    - [x] Basic network mapping
 
-- [ ] **Documentation**
+- [x] **Documentation**
   - [x] Explain methodology used
   - [x] Describe potential security implications
 
@@ -305,6 +305,9 @@ To bypass this error edit the `docker-compose.yml` file and add the configuratio
 security_opt:
   - seccomp: unconfined
   - apparmor: unconfined
+
+  Disable AppArmor
+
 
 
 
