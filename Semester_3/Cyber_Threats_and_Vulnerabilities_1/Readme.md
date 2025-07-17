@@ -1,8 +1,8 @@
 # Cyber Threats and Vulnerabilities 1
 
-## ✅ Criteria Breakdown & Deliverables
+# ✅ Criteria Breakdown & Deliverables
 
-### 🔍 1. Identify and Analyze Cyber Threats
+## 🔍 1. Identify and Analyze Cyber Threats
 
 - [X] **Malware Analysis**
   - [x] Analyze a malware sample using:
@@ -20,25 +20,25 @@
   - [X] Map 1 real-world APT campaign to MITRE ATT&CK framework
 
 
-### StealC Malware Samples
+#### StealC Malware Samples
 https://bazaar.abuse.ch/sample/8301936f439f43579cffe98e11e3224051e2fb890ffe9df680bbbd8db0729387/
 
-### Virus Total Analysis
+#### Virus Total Analysis
 https://www.virustotal.com/gui/file/8301936f439f43579cffe98e11e3224051e2fb890ffe9df680bbbd8db0729387
 
-### Cape Sandbox Behavior Analysis
+#### Cape Sandbox Behavior Analysis
 https://www.capesandbox.com/analysis/13533/
 
 
-# Comprehensive Malware Analysis Report
+#### Comprehensive Malware Analysis Report
 
 **File SHA-256:** `8301936f439f43579cffe98e11e3224051e2fb890ffe9df680bbbd8db0729387`
 
 ---
 
-## Detection Results
+### Detection Results
 
-### VirusTotal
+#### VirusTotal
 
 - **Detection Rate:** 10 / 70 antivirus engines flagged the file.
 - **Notable Detections:**
@@ -50,16 +50,16 @@ https://www.capesandbox.com/analysis/13533/
 
 ---
 
-## Behavioral Indicators
+### Behavioral Indicators
 
-### VirusTotal
+#### VirusTotal
 
 - **Network Activity:** Attempts to establish connections with remote servers, often for command and control purposes.
 - **Persistence Mechanisms:** Modifies system settings to ensure it remains active after system reboots.
 - **Payload Delivery:** Downloads and executes additional malicious payloads, such as ransomware or information stealers.
 - **Email Propagation:** Spreads via malicious email attachments or links, often masquerading as legitimate documents.
 
-### CAPE Sandbox
+#### CAPE Sandbox
 
 - **Execution Behavior:** The file was executed in a controlled environment to observe its behavior.
 - **Network Activity:** Established connections to external servers, indicating potential command and control communication.
@@ -70,7 +70,7 @@ https://www.capesandbox.com/analysis/13533/
 
 ---
 
-## Potential Impact
+#### Potential Impact
 
 - **Data Theft:** Harvests sensitive information, including login credentials and personal data.
 - **System Compromise:** Creates backdoors, allowing attackers to gain unauthorized access to the infected system.
@@ -79,7 +79,7 @@ https://www.capesandbox.com/analysis/13533/
 
 ---
 
-## Recommendations
+#### Recommendations
 
 - **Immediate Action:** If this file is detected on your system, isolate the affected machine to prevent further spread.
 - **Antivirus Scan:** Run a full system scan using reputable antivirus software to detect and remove any associated threats.
@@ -89,7 +89,7 @@ https://www.capesandbox.com/analysis/13533/
 
 ---
 
-## **Phishing Simulation**
+#### **Phishing Simulation**
 
 Using the Social Engineering Toolkit we can simulate a phishing attack
 
@@ -112,7 +112,7 @@ We would type sudo su in terminal and then setoolkit
 ![Phishing Simulation Login Tool](Criteria1_SETOOLKIT_Login3.png)
 
 
-### APT Campaign Mapping*
+#### APT Campaign Mapping*
 
 🎯 1. MintsLoader
 
@@ -137,7 +137,7 @@ T1003 – Credential Access
 T1071/T1041 – C2 & Exfiltration
 
 
-### 🛠️ 2. Apply Vulnerability Assessment Techniques
+## 🛠️ 2. Apply Vulnerability Assessment Techniques
 
 - [x] **Vulnerability Scan**
   - [x] Conduct scan using Nmap or OpenVAS
@@ -157,9 +157,7 @@ T1071/T1041 – C2 & Exfiltration
   - [x] Explain methodology used
   - [x] Describe potential security implications
 
-  ### **Vulnerability Scan**
-
-# 🔎 Vulnerability Scan Report
+### **Vulnerability Scan**
 
 In ParrotOS Terminal `nmap -sC -sV 192.168.1.82`
 
@@ -173,9 +171,9 @@ In ParrotOS Terminal `nmap -sC -sV --script vuln 192.168.1.82`
 ![Nmap Vulnerability Scan 3](nmap_vuln_3.png)
 ![Nmap Vulnerability Scan 4](nmap_vuln_4.png)
 
-## ✅ Vulnerability Scan Summary
+### ✅ Vulnerability Scan Summary
 
-### Target: `192.168.1.82`
+#### Target: `192.168.1.82`
 - **Service Detected:** DNS (`port 53`) running `dnsmasq 2.90`
 - **Status:** Open
 - **Vulnerability Findings:**
@@ -189,7 +187,7 @@ In ParrotOS Terminal `nmap -sC -sV --script vuln 192.168.1.82`
     - PacketStorm
     - Vulners
 
-## 🗂 Vulnerability Classification
+#### 🗂 Vulnerability Classification
 
 | CVE / ID                      | CVSS Score | Description                                          | Exploit Available | Reference URL |
 |------------------------------|------------|------------------------------------------------------|-------------------|----------------|
@@ -222,18 +220,18 @@ In ParrotOS Terminal `nmap -sC -sV --script vuln 192.168.1.82`
 > ✅ = Exploit publicly available
 
 ---
-### Target: `demo.owasp-juice.shop`
+#### Target: `demo.owasp-juice.shop`
 - **Service Detected:** Host up, no vulnerable services found
 - **Pre-scan Result:** 
   - Avahi DoS check (`CVE-2011-1002`) — Not vulnerable
 
 ---
 
-## 🌐 Asset Discovery Summary
+#### 🌐 Asset Discovery Summary
 
 ![Nmap Asset Discovery](nmap_sn_scan.png)
 
-### Network: `192.168.1.0/24`
+#### Network: `192.168.1.0/24`
 - **Live Hosts Detected:** 10+
 - **Discovered Devices:**
   - 📱 `192.168.1.11` — iPhone (Apple)
@@ -245,7 +243,7 @@ In ParrotOS Terminal `nmap -sC -sV --script vuln 192.168.1.82`
   - ⚠️ `192.168.1.82` — Vulnerable DNS Host (`dnsmasq 2.90`)
 
 
-### 🧠 3. Implement Threat Intelligence Principles
+## 🧠 3. Implement Threat Intelligence Principles
 
 - [ ] **IoC Analysis**
   - [ ] Analyze 2 Indicators of Compromise (IoCs)
@@ -261,6 +259,57 @@ In ParrotOS Terminal `nmap -sC -sV --script vuln 192.168.1.82`
     - [ ] Connector integration
     - [ ] Basic usage demonstration
     - [ ] Screenshots or logs showing functionality
+
+#### OpenCTI Setup
+
+` sudo apt update `
+` sudo apt upgrade -y `
+
+Install Docker and Docker Compose in ParrotOS first.
+
+` sudo apt install docker.io docker-compose git -y `
+
+Add ParrotOS "user" to Docker group.
+
+` sudo usermod -aG docker $USER `
+` newgrp docker `
+
+Clone the OpenCTI Docker repository
+
+` git clone https://github.com/OpenCTI-Platform/docker.git openctidocker `
+` cd opencti-docker `
+` cp .env.sample .env `
+
+Edit your email and password
+
+` nano .env ` 
+
+Launch OpenCTI
+
+` docker-compose pull `
+` docker-compose up -d `
+
+This will launch:
+- ElasticSearch
+- MinIO
+- RabbitMQ
+- Redis
+- PostgreSQL
+- OpenCTI
+- Worker Processes
+
+Note: There is a known problem with ParrotOS (and some debian based distros like Kali Linux) where AppArmor is not fully configured and causes conflict with docker. 
+
+To bypass this error edit the `docker-compose.yml` file and add the configuration below to each docker service.
+
+security_opt:
+  - seccomp: unconfined
+  - apparmor: unconfined
+
+
+
+
+
 
 ### ⚠️ 4. Develop and Apply Risk Management Strategies
 
