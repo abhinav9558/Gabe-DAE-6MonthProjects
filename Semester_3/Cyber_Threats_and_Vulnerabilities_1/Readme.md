@@ -253,7 +253,7 @@ In ParrotOS Terminal `nmap -sC -sV --script vuln 192.168.1.82`
 
 - [ ] **OpenCTI Setup**
   -[x] Install OpenCTI using Docker or native system
-  - [ ] Configure at least 2 connectors
+  - [x] Configure at least 2 connectors
   - [ ] Document:
     - [ ] Platform setup
     - [ ] Connector integration
