@@ -252,7 +252,7 @@ In ParrotOS Terminal `nmap -sC -sV --script vuln 192.168.1.82`
     - [ ] Threat indicators
 
 - [ ] **OpenCTI Setup**
-  - [ ] Install OpenCTI using Docker or native system
+  -[x] Install OpenCTI using Docker or native system
   - [ ] Configure at least 2 connectors
   - [ ] Document:
     - [ ] Platform setup
@@ -308,8 +308,16 @@ security_opt:
 
   Disable AppArmor
 
+## Connectors
 
+### Mitre Atlas
+https://github.com/OpenCTI-Platform/connectors/blob/master/external-import/mitre-atlas
 
+### VirusTotal
+https://github.com/OpenCTI-Platform/connectors/blob/master/external-import/virustotal-livehunt-notifications
+
+### ThreatFox
+https://github.com/OpenCTI-Platform/connectors/tree/master/external-import/threatfox
 
 
 
