@@ -29,11 +29,14 @@ class BudgetTracker:
         Returns:
             None
 
-        Side Effects:
-            - Sets window title.
-            - Initializes transactions DataFrame and budget dictionary.
-            - Loads saved budgets.
-            - Displays the main menu UI.
+        Raises:
+
+        Edge Cases:
+
+        Extend & Modify:
+
+        Integration Notes: 
+
         """
         self.root = root
         self.root.title("Budget Tracker")
@@ -126,7 +129,6 @@ class BudgetTracker:
         reverse = self.sort_direction.get(col, False)
 
         def try_parse(val):
-            # Try to parse date
             try:
                 return pd.to_datetime(val)
             except:
