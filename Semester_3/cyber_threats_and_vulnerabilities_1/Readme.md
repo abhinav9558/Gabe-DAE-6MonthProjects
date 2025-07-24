@@ -245,7 +245,7 @@ In ParrotOS Terminal `nmap -sC -sV --script vuln 192.168.1.82`
 
 ## 🧠 3. Implement Threat Intelligence Principles
 
-- [ ] **IoC Analysis**
+- [x] **IoC Analysis**
   - [x] Analyze 2 Indicators of Compromise (IoCs)
   - [x] Document:
     - [x] Detection methods
