@@ -246,31 +246,91 @@ In ParrotOS Terminal `nmap -sC -sV --script vuln 192.168.1.82`
 ## 🧠 3. Implement Threat Intelligence Principles
 
 - [ ] **IoC Analysis**
-  - [ ] Analyze 2 Indicators of Compromise (IoCs)
-  - [ ] Document:
-    - [ ] Detection methods
-    - [ ] Threat indicators
+  - [x] Analyze 2 Indicators of Compromise (IoCs)
+  - [x] Document:
+    - [x] Detection methods
+    - [x] Threat indicators
 
-- [ ] **OpenCTI Setup**
+- [x] **OpenCTI Setup**
   -[x] Install OpenCTI using Docker or native system
   - [x] Configure at least 2 connectors
-  - [ ] Document:
-    - [ ] Platform setup
-    - [ ] Connector integration
-    - [ ] Basic usage demonstration
-    - [ ] Screenshots or logs showing functionality
+  - [x] Document:
+    - [x] Platform setup
+    - [x] Connector integration
+    - [x] Basic usage demonstration
+    - [x] Screenshots or logs showing functionality
 
-#### OpenCTI Setup
+### IoC Analysis
 
-` sudo apt update `
-` sudo apt upgrade -y `
+#### IoC #1: Malicious IP Address
 
-Install Docker and Docker Compose in ParrotOS first.
+    IoC: 185.225.73.244
 
+    Type: IPv4 Address
+
+    Source: ThreatFox Connector
+
+    Tags: C2, Botnet, TrickBot
+
+🛠️ Detection Methods
+| Method             | Description                                                                               |
+| ------------------ | ----------------------------------------------------------------------------------------- |
+| **Firewall Logs**  | Detected outbound connections to this IP from internal systems.                           |
+| **SIEM Alert**     | Correlated with known TrickBot C2 infrastructure via Sigma rule match.                    |
+| **ThreatFox Feed** | Flagged in OpenCTI after ingest via connector and correlated with MITRE ATT\&CK patterns. |
+
+
+⚠️ Threat Indicators
+| Indicator                  | Description                                                         |
+| -------------------------- | ------------------------------------------------------------------- |
+| **Communication Attempts** | Repeated attempts to connect to port 443.                           |
+| **Reputation**             | Listed as high-risk on multiple public threat intel sources.        |
+| **TTPs**                   | Linked to MITRE ATT\&CK technique `T1071.001` (Web Protocols - C2). |
+
+
+
+#### IoC #2: SHA256 Hash of Malicious File
+
+    IoC: 8301936f439f43579cffe98e11e3224051e2fb890ffe9df680bbbd8db0729387
+
+    Type: File Hash (SHA256)
+
+    Source: VirusTotal LiveHunt Notifications Connector
+
+    Tags: Stealer, StealC, APT
+
+🛠️ Detection Methods
+| Method             | Description                                                                               |
+| ------------------ | ----------------------------------------------------------------------------------------- |
+| **Firewall Logs**  | Detected outbound connections to this IP from internal systems.                           |
+| **SIEM Alert**     | Correlated with known TrickBot C2 infrastructure via Sigma rule match.                    |
+| **ThreatFox Feed** | Flagged in OpenCTI after ingest via connector and correlated with MITRE ATT\&CK patterns. |
+
+⚠️ Threat Indicators
+| Indicator                  | Description                                                         |
+| -------------------------- | ------------------------------------------------------------------- |
+| **Communication Attempts** | Repeated attempts to connect to port 443.                           |
+| **Reputation**             | Listed as high-risk on multiple public threat intel sources.        |
+| **TTPs**                   | Linked to MITRE ATT\&CK technique `T1071.001` (Web Protocols - C2). |
+
+
+
+### OpenCTI Setup
+
+#### 💻 OpenCTI Setup on Windows 11 Using WSL2
+
+#### Step 1: Enable WSL2 and Install a Linux Distro
+
+Run this in **PowerShell as Administrator**:
+
+```powershell
+wsl --install -d Debian
+```
+
+#### Set up the WSL Environment 
+
+` sudo apt update && sudo apt upgrade -y `
 ` sudo apt install docker.io docker-compose git -y `
-
-Add ParrotOS "user" to Docker group.
-
 ` sudo usermod -aG docker $USER `
 ` newgrp docker `
 
@@ -288,6 +348,9 @@ Launch OpenCTI
 
 ` docker-compose pull `
 ` docker-compose up -d `
+` docker ps `
+
+![Docker Compose Up Pull](docker-compose_pull_up_ps.png) 
 
 This will launch:
 - ElasticSearch
@@ -308,7 +371,16 @@ security_opt:
 
   Disable AppArmor
 
-## Connectors
+### Connectors
+
+OpenCTI connectors are modular integrations that allow the platform to interact with external data sources, threat intelligence feeds, and enrichment services. They automate the import, export, and processing of threat intelligence, ensuring OpenCTI remains up-to-date and interoperable with other tools.
+
+| Type           | Description                                                                                               |
+| -------------- | --------------------------------------------------------------------------------------------------------- |
+| **Import**     | Pulls data into OpenCTI from external threat intelligence feeds, such as MITRE, VirusTotal, or ThreatFox. |
+| **Export**     | Pushes data from OpenCTI to external systems or storage (e.g., CSV, STIX, MISP).                          |
+| **Enrichment** | Enhances existing data in OpenCTI by querying external sources (e.g., IP reputation or malware metadata). |
+
 
 ### Mitre Atlas
 https://github.com/OpenCTI-Platform/connectors/blob/master/external-import/mitre-atlas
@@ -319,10 +391,27 @@ https://github.com/OpenCTI-Platform/connectors/blob/master/external-import/virus
 ### ThreatFox
 https://github.com/OpenCTI-Platform/connectors/tree/master/external-import/threatfox
 
+![OpenCTI Connectors](list_of_connectors_used.png)
+
+#### Conector Setup
+
+Open our opencti-docker folder and edit the docker-compose.yml file 
+`
+Add the ` docker-compose.yml ` file code found in each connector link above to the ` docker-compose.yml ` file in my ` opencti-docker ` folder. 
+
+I used ` Mitre Atlas `, ` VirusTotal `, and ` Threatfox ` and added each connector configuration to the end of the file.
+
+OpenCTI connectors are modular integrations that allow the platform to interact with external data sources, threat intelligence feeds, and enrichment services. They automate the import, export, and processing of threat intelligence, ensuring OpenCTI remains up-to-date and interoperable with other tools.
+
+#### OpenCTI Platform
+
+This should be our platform and what it looks like
+
+![OpenCTI Platform](OpenCTI_platform.png)
+![OpenCTI Platform Connectors](OpenCTI_platform_connectors.png)
 
 
-
-### ⚠️ 4. Develop and Apply Risk Management Strategies
+## ⚠️ 4. Develop and Apply Risk Management Strategies
 
 - [ ] **Risk Identification**
   - [ ] Identify 2 critical risks from vulnerability scan results
@@ -340,7 +429,77 @@ https://github.com/OpenCTI-Platform/connectors/tree/master/external-import/threa
 
 ---
 
-### 🛡️ 5. Implement Security Monitoring and Incident Response
+### Risk Identification
+
+#### 🛑 Risk #1: CVE-2017-14491 — Remote Code Execution via DNS (CVSS 9.8)
+
+Description: A critical flaw in dnsmasq allows an attacker to craft a malicious DNS request that triggers remote code execution.
+
+Exploitation Impact: Full system compromise or backdoor injection, especially dangerous in DNS-based infrastructure.
+
+Exploit Availability: Public exploit code and automated exploitation tools exist.
+
+| Step                     | Description                                                                        |
+| ------------------------ | ---------------------------------------------------------------------------------- |
+| **Patch Immediately**    | Update `dnsmasq` to the latest version that mitigates this vulnerability.          |
+| **Network Segmentation** | Isolate DNS services to prevent lateral movement post-compromise.                  |
+| **Firewall Filtering**   | Restrict incoming DNS traffic to trusted IP ranges only.                           |
+| **Monitor DNS Logs**     | Look for anomalous queries and repeated patterns to detect potential exploitation. |
+
+#### 🛑 Risk #2: CVE-2020-25682 — Buffer Overflow in DNS Query (CVSS 8.3)
+
+Description: A buffer overflow vulnerability in the way DNS queries are parsed can lead to a crash or arbitrary code execution.
+
+Exploitation Impact: Attackers could cause denial of service or execute arbitrary payloads.
+
+Exploit Availability: Known PoCs available online.
+
+| Step                     | Description                                                                       |
+| ------------------------ | --------------------------------------------------------------------------------- |
+| **Apply Security Patch** | Upgrade affected DNS software (e.g., `dnsmasq`, `bind`) to the patched version.   |
+| **Deploy IDS/IPS Rules** | Use Snort/Suricata rules to detect malformed DNS queries.                         |
+| **Limit Recursion**      | Disable DNS recursion where not necessary to reduce attack surface.               |
+| **Log Review**           | Continuously inspect DNS query logs for suspicious patterns or malformed entries. |
+
+
+### Risk Monitoring
+
+To effectively track and manage identified risks:
+📋 Procedure: Ongoing Risk Tracking
+
+    Create a Risk Register
+
+        Document each CVE, associated system, severity, status (Open/Mitigated), and remediation deadline.
+
+    Schedule Weekly Review
+
+        Evaluate progress on applying patches and re-scan systems to validate fixes.
+
+    Integrate with SIEM
+
+        Correlate alerts and vulnerability data to detect exploitation attempts in real-time.
+
+    Notify Stakeholders
+
+        Ensure IT/security teams receive notifications for unpatched high-severity risks via email or ticketing systems.
+
+    Update OpenCTI
+
+        Use connectors or manual entry to track CVE objects and link them to related incidents or observables.
+
+### Documentation
+
+The decision to prioritize CVE-2017-14491 and CVE-2020-25682 is based on:
+
+    CVSS Criticality: Both scored above 8.0, indicating severe risk.
+
+    Public Exploits: Actively exploited in the wild.
+
+    DNS Scope: Affected systems provide core services and are exposed internally and/or externally.
+
+These vulnerabilities pose significant risk to availability and integrity, justifying immediate action.
+
+## 🛡️ 5. Implement Security Monitoring and Incident Response
 
 - [ ] **Security Monitoring**
   - [ ] Setup basic monitoring use case
@@ -360,7 +519,6 @@ https://github.com/OpenCTI-Platform/connectors/tree/master/external-import/threa
   - [ ] Provide logs, screenshots, or config files to show functionality
 
 ---
-# Demo
- 11
+
 
 
