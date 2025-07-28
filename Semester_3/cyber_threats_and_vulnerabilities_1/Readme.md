@@ -414,9 +414,9 @@ This should be our platform and what it looks like
 ## ⚠️ 4. Develop and Apply Risk Management Strategies
 
 - [ ] **Risk Identification**
-  - [ ] Identify 2 critical risks from vulnerability scan results
+  - [x] Identify 2 critical risks from vulnerability scan results
   - [ ] Provide:
-    - [ ] Explanations
+    - [x] Explanations
     - [ ] Treatment recommendations
     - [ ] Basic mitigation steps
 
