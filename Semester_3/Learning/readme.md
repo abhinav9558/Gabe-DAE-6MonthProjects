@@ -21,6 +21,11 @@ git stash push -m "this is a temporary change"
 # Will stash both tracked and untracked files
 git stash -u
 
+# Will take change you made in the stash and 
+git stash pop
 
+
+
+#
 git rebase -i HEAD~n
 

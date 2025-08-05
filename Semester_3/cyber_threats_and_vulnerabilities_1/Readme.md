@@ -508,6 +508,26 @@ These vulnerabilities pose significant risk to availability and integrity, justi
     - [ ] Alert prioritization process
     - [ ] Response procedures
 
+
+Using our SIEM software Wazuh we can set up a detection rule for FTP login success/failure events
+
+``` xml
+<group name="ftp,windows,">
+  <rule id="100120" level="10">
+    <decoded_as>windows</decoded_as>
+    <match>530 Login authentication failed</match>
+    <description>FTP login failed on Windows (FileZilla)</description>
+  </rule>
+
+  <rule id="100121" level="5">
+    <decoded_as>windows</decoded_as>
+    <match>230 Logged on</match>
+    <description>FTP login successful on Windows (FileZilla)</description>
+  </rule>
+</group>
+```
+
+
 - [ ] **Incident Response**
   - [ ] Simulate 1 incident response scenario
   - [ ] Document:
