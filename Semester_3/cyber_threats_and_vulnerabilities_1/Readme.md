@@ -417,15 +417,15 @@ This should be our platform and what it looks like
   - [x] Identify 2 critical risks from vulnerability scan results
   - [ ] Provide:
     - [x] Explanations
-    - [ ] Treatment recommendations
-    - [ ] Basic mitigation steps
+    - [x] Treatment recommendations
+    - [x] Basic mitigation steps
 
-- [ ] **Risk Monitoring**
-  - [ ] Create 1 procedure for tracking identified risks
+- [x] **Risk Monitoring**
+  - [x] Create 1 procedure for tracking identified risks
 
-- [ ] **Documentation**
-  - [ ] Justify decisions made
-  - [ ] Clearly present assessments and procedures
+- [x] **Documentation**
+  - [x] Justify decisions made
+  - [x] Clearly present assessments and procedures
 
 ---
 
@@ -501,15 +501,20 @@ These vulnerabilities pose significant risk to availability and integrity, justi
 
 ## 🛡️ 5. Implement Security Monitoring and Incident Response
 
-- [ ] **Security Monitoring**
-  - [ ] Setup basic monitoring use case
-  - [ ] Include:
-    - [ ] Detection rules
-    - [ ] Alert prioritization process
-    - [ ] Response procedures
+- [x] **Security Monitoring**
+  - [x] Setup basic monitoring use case
+  - [x] Include:
+    - [x] Detection rules
+    - [x] Alert prioritization process
+    - [x] Response procedures
 
 
 Using our SIEM software Wazuh we can set up a detection rule for FTP login success/failure events
+
+![Wazuh](wazuh_rules.png)
+![Wazuh](wazuh_rule_ftpwindows.png)
+
+#### Detection Rules
 
 ``` xml
 <group name="ftp,windows,">
@@ -528,17 +533,113 @@ Using our SIEM software Wazuh we can set up a detection rule for FTP login succe
 ```
 
 
-- [ ] **Incident Response**
-  - [ ] Simulate 1 incident response scenario
-  - [ ] Document:
-    - [ ] Incident classification
-    - [ ] Steps taken
-    - [ ] Lessons learned
+#### Alert prioritization process
 
-- [ ] **Evidence**
-  - [ ] Provide logs, screenshots, or config files to show functionality
+| Alert Level | Description                  | Action Taken                         |
+| ----------- | ---------------------------- | ------------------------------------ |
+| High        | Privilege escalation attempt | Immediate investigation & isolation  |
+| Medium      | Multiple failed logins       | Correlate source IP, monitor further |
+| Low         | Login success to FTP         | Logged for audit                     |
 
+#### Response Procedures
+
+
+    For high-severity alerts (e.g., privilege escalation):
+
+        Isolate affected machine
+
+        Notify SOC lead
+
+        Pull relevant logs for forensic review
+
+        Reset compromised credentials
+
+    For medium-severity alerts (e.g., brute force login attempts):
+
+        Verify source IP
+
+        Block IP via firewall or endpoint rules
+
+        Monitor for repeated attempts
+
+    For low-severity alerts (e.g., FTP login success):
+
+        Log activity for audit
+
+        Verify user account access policy
+
+        No immediate action unless pattern becomes suspicious
+
+- [x] **Incident Response**
+  - [x] Simulate 1 incident response scenario
+  - [x] Document:
+    - [x] Incident classification
+    - [x] Steps taken
+    - [x] Lessons learned
+
+- [x] **Evidence**
+  - [x] Provide logs, screenshots, or config files to show functionality
+
+#### Simulated Incident Response Scenario
+
+Scenario:
+An attacker performs a brute force attack on an exposed FTP server hosted on a Windows 11 VM. The attacker uses Hydra from Parrot OS to try multiple username/password combinations. Wazuh detects and alerts on the repeated failed login attempts.
+
+#### 🧩 Incident Classification
+
+- **Type:** Brute Force Attack  
+- **Severity:** Medium  
+- **Category:** Unauthorized Access Attempt  
+- **Source:** Attacker VM (192.168.1.133) using `Hydra` against FTP service
 ---
 
+#### Steps Taken
 
+1. **Detection:**
+   - Wazuh agent on the Windows 11 endpoint forwarded FTP login failure logs to the Wazuh manager.
+   - Custom rule triggered an alert for excessive login failures (Rule ID: 100102).
+
+2. **Investigation:**
+   - Reviewed Wazuh alert data and confirmed repeated login attempts.
+   - Identified source IP and confirmed it was not a trusted system.
+
+3. **Containment:**
+   - Blocked attacker IP (192.168.1.133) using Windows Defender Firewall.
+
+4. **Eradication:**
+   - Disabled FTP service temporarily.
+   - Changed credentials for any affected accounts.
+
+5. **Recovery:**
+   - Re-enabled FTP service after hardening (e.g., login rate limits, disabled anonymous login).
+
+6. **Post-Incident Actions:**
+   - Implemented additional Wazuh rules to monitor for brute force patterns across other protocols (SSH, RDP).
+   - Scheduled endpoint vulnerability scan.
+---
+
+#### 📘 Lessons Learned
+
+- Basic FTP services without rate limiting are vulnerable to brute force.
+- Wazuh detection rules were effective but lacked initial granularity (future improvement: trigger alerts after X attempts per IP).
+- Logging and alerting pipeline worked as expected.
+
+#### Evidence
+
+Logs:
+
+Wazuh alerts showing repeated FTP Logs:
+
+Wazuh alerts showing repeated FTP failures: failures:
+
+``` pgsql    
+Rule: 100102 (level 10) -> 'FTP login failure'
+Src IP: 192.168.1.133
+Message: Login failed for user test1
+```
+
+**Hydra command used in simulation:**
+```bash
+hydra -L users.txt -P passwords.txt ftp://192.168.1.207
+```
 
