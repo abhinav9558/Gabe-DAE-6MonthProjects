@@ -1,3 +1,6 @@
+title: "Gabriel Zepeda's Portfolio"
+description: "A simple portfolio for a simple man"
+
 # Webpage Theme
 theme: minima
 
@@ -5,6 +8,8 @@ theme: minima
 header_pages:
   - index.md
   - projects.md
+  - about.md
+  - contacts.md
   - resume_draft.md
 
 author:
