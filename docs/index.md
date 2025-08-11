@@ -21,4 +21,4 @@ Hey nice to meet you visitors, I'm Gabe and I'm studying Cyber Security specifca
 
 [Return to Home](./index.md)
 
-![DAE Logo](/assests/img/DAE.png){: style="width:120px;" }
+![DAE Logo](assests/img/DAE.png){: style="width:120px;" }
