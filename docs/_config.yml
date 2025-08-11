@@ -2,7 +2,7 @@ title: "Gabriel Zepeda's Portfolio"
 description: "A simple portfolio for a simple man"
 
 # Webpage Theme
-theme: minima
+remote_theme: "mmistakes/minimal-mistakes"
 
 # My Headers
 header_pages:
