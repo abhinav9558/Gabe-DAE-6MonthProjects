@@ -133,3 +133,18 @@ This project automates correlation and timeline generation, making threat analys
 ---
 
 *All projects are under active version control and documented in accordance with professional cybersecurity project standards.*
+
+<!-- Other page content -->
+
+<html>
+<body>
+<footer>
+    <p>Thanks for visiting!</p>
+    <iframe width="100%" height="166" scrolling="no" frameborder="no" 
+        allow="autoplay"
+        src="https://soundcloud.com/forrestfrank/lift-my-hands?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">
+    </iframe>
+</footer>
+</body>
+</html>
+
