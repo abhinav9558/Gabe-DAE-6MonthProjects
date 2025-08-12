@@ -92,3 +92,5 @@ Main responsibility was making sure that the individual clients that were signed
 - Well versed in leading, planning, budgeting and managing projects.
 
 [Return to Home](./index.md)
+
+![DAE Logo](assets/img/DAE.png){: style="width:120px;"}
