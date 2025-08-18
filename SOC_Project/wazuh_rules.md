@@ -5,14 +5,12 @@
 ``` xml
 <group name="ftp,windows,">
   <rule id="100120" level="10">
-    <decoded_as>windows</decoded_as>
-    <match>530 Login authentication failed</match>
+    <match>530 Login incorrect</match>
     <description>FTP login failed on Windows (FileZilla)</description>
   </rule>
 
   <rule id="100121" level="5">
-    <decoded_as>windows</decoded_as>
-    <match>230 Logged on</match>
+    <match>230 Login successful</match>
     <description>FTP login successful on Windows (FileZilla)</description>
   </rule>
 </group>
@@ -20,6 +18,30 @@
 ```
 
 This rule set checks for FTP server requests wether logins are successful or failed. This ruleset is great for testing brute force techniques which are being applied on a server and will log each brute force attempt as failed or successful.
+
+Make sure that the FileZilla server log is being properly accessed by specifiying in the wazuh agent configuration file `C:\Program Files (x86)\ossec-agent\ossec.conf`
+
+Place the <localfile> tag inbetween the <ossec_config> tag and add the <log_format> and <location> of the filezilla server log in xml format.
+
+```xml
+
+<ossec_config>
+
+...
+
+<!-- Log analysis -->
+
+  <localfile>
+    <log_format>syslog</log_format>
+    <location>C:\Program Files\FileZilla Server\Logs\filezilla-server.log</location>    
+  </localfile>
+
+...
+
+</ossec_config>
+```
+
+Note: You might need to add full control permissions to `ossec.conf` and `filezilla-server.log` as in windows they cannot be read or accessed by default. Right click and add the permission in the file properties security tab.
 
 ### Ransomeware
 
