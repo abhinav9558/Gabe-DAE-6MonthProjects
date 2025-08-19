@@ -3,15 +3,23 @@
 ### FTP Server Checks
 
 ``` xml
+
 <group name="ftp,windows,">
-  <rule id="100120" level="10">
+  <rule id="100120" level="6">
     <match>530 Login incorrect</match>
     <description>FTP login failed on Windows (FileZilla)</description>
   </rule>
-
+  
   <rule id="100121" level="5">
     <match>230 Login successful</match>
     <description>FTP login successful on Windows (FileZilla)</description>
+  </rule>
+</group>
+
+<group name="ftp,bruteforce">
+  <rule id="100123" level="6" frequency="6" timeframe="30">
+      <if_matched_sid>100120</if_matched_sid>
+      <description>Multiple login failure</description>
   </rule>
 </group>
 
