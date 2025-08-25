@@ -19,7 +19,7 @@
 <group name="ftp,bruteforce">
   <rule id="100123" level="6" frequency="6" timeframe="30">
       <if_matched_sid>100120</if_matched_sid>
-      <description>Multiple login failure</description>
+      <description> Multiple login failure (Brute Force Attempt)</description>
   </rule>
 </group>
 
