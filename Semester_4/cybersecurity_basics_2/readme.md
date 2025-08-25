@@ -33,6 +33,234 @@ The project must include technical writing with a clearly written cybersecurity 
 
 ---
 
+### 1. Implement and Explain Advanced Cybersecurity Defense Strategies  
+
+#### 1.1 Zero Trust Architecture (ZTA)  
+- **Definition:** A security framework that requires continuous verification of users, devices, and applications, regardless of location within or outside the network perimeter.  
+- **Implementation Example:**  
+  1. **Identity Layer:** Enforce Multi-Factor Authentication (MFA) for all VPN logins.  
+  2. **Network Layer:** Require device posture validation (up-to-date patches, endpoint protection enabled) before granting access to internal resources.  
+- **Result:** Access is not granted based on network location alone, but on verified trust at multiple layers.  
+
+
+```mermaid
+flowchart TD
+    A[User Requests Access] --> B{Multi-Factor Authentication}
+    B -->|Success| C[Device Posture Validation]
+    B -->|Failure| X[Access Denied]
+    C --> D{Device Compliant?}
+    D -->|Yes| E[Identity Verification]
+    D -->|No| Y[Remediate Device]
+    Y --> C
+    E --> F{Policy Check}
+    F -->|Authorized| G[Grant Limited Access]
+    F -->|Unauthorized| Z[Access Denied]
+    G --> H[Continuous Monitoring]
+    H --> I{Anomaly Detected?}
+    I -->|No| J[Maintain Access]
+    I -->|Yes| K[Re-authenticate/Restrict]
+    K --> B
+    J --> H
+
+    style A fill:#e1f5fe
+    style G fill:#c8e6c9
+    style X fill:#ffcdd2
+    style Y fill:#fff3e0
+    style Z fill:#ffcdd2
+```
+
+---
+
+#### 1.2 Defense in Depth (DiD)  
+- **Definition:** A layered security approach where multiple security controls are implemented across the IT environment to reduce risk.  
+- **Example System Architecture with 3 Layers:**  
+  1. **Perimeter Layer:** Firewall + Intrusion Detection System (IDS).  
+  2. **Host Layer:** Endpoint Detection & Response (EDR) with real-time monitoring.  
+  3. **Application/Data Layer:** Database encryption and role-based access control (RBAC).  
+- **Result:** Even if one defense fails (e.g., firewall bypass), additional layers continue to protect assets. 
+
+---
+
+```mermaid
+flowchart TB
+    subgraph "Perimeter Layer"
+        A[Firewall] 
+        B[Intrusion Detection System]
+        C[VPN Gateway]
+    end
+    
+    subgraph "Network Layer"
+        D[Network Segmentation]
+        E[Load Balancer]
+        F[WAF - Web Application Firewall]
+    end
+    
+    subgraph "Host Layer"
+        G[Endpoint Detection & Response]
+        H[Anti-malware]
+        I[Host-based Firewall]
+    end
+    
+    subgraph "Application Layer"
+        J[Input Validation]
+        K[Authentication & Authorization]
+        L[Session Management]
+    end
+    
+    subgraph "Data Layer"
+        M[Database Encryption]
+        N[Role-Based Access Control]
+        O[Data Loss Prevention]
+    end
+    
+    P[External Threat] --> A
+    A --> D
+    D --> G
+    G --> J
+    J --> M
+    
+    style P fill:#ffcdd2
+    style M fill:#c8e6c9
+    style A fill:#fff3e0
+    style D fill:#fff3e0
+    style G fill:#fff3e0
+    style J fill:#fff3e0
+```
+
+---
+
+#### 1.3 Supply Chain Security  
+- **Definition:** Protecting systems from vulnerabilities or compromises introduced via third-party vendors, software, or hardware.  
+- **Example of Risk Identification and Mitigation:**  
+  - **Risk:** Open-source library used in a web app contains a known vulnerability (e.g., Log4j exploit).  
+  - **Mitigation:**  
+    - Perform regular dependency scanning (e.g., with OWASP Dependency-Check, GitHub Dependabot).  
+    - Apply vendor patches and update vulnerable components immediately.  
+    - Implement Software Bill of Materials (SBOM) tracking.  
+- **Result:** Ensures that third-party risks are detected early and mitigated before exploitation.  
+
+---
+
+```mermaid
+flowchart TD
+    A[Third-Party Component] --> B{Vulnerability Scanning}
+    B -->|Clean| C[Integration Approved]
+    B -->|Vulnerable| D[Risk Assessment]
+    
+    D --> E{Risk Level}
+    E -->|Low| F[Accept with Monitoring]
+    E -->|Medium| G[Apply Patches/Updates]
+    E -->|High| H[Block/Replace Component]
+    
+    C --> I[Software Bill of Materials]
+    F --> I
+    G --> I
+    
+    I --> J[Continuous Monitoring]
+    J --> K{New Vulnerability?}
+    K -->|No| L[Maintain Operation]
+    K -->|Yes| M[Alert & Reassess]
+    
+    M --> D
+    L --> J
+    
+    subgraph "Tools & Processes"
+        N[OWASP Dependency-Check]
+        O[GitHub Dependabot]
+        P[SBOM Tracking]
+        Q[CVE Database]
+    end
+    
+    B -.-> N
+    B -.-> O
+    I -.-> P
+    K -.-> Q
+    
+    style A fill:#e1f5fe
+    style H fill:#ffcdd2
+    style C fill:#c8e6c9
+    style I fill:#fff3e0
+```
+
+---
+
+#### 1.4 Advanced Security Models  
+
+##### 1.4a Bell-LaPadula Model (Confidentiality-Focused)  
+- **Definition:** Enforces data confidentiality using security clearance levels.  
+- **Application:** Used in military systems where users with "Secret" clearance cannot access "Top Secret" data, but can write upwards.  
+- **Rule:** *"No Read Up, No Write Down"*.  
+
+---
+```mermaid
+graph TB
+    subgraph "Bell-LaPadula Model (Confidentiality)"
+        A1[Top Secret] 
+        A2[Secret]
+        A3[Confidential]
+        A4[Unclassified]
+        
+        A1 -.->|No Read Down| A2
+        A2 -.->|No Read Down| A3
+        A3 -.->|No Read Down| A4
+        
+        A4 -->|Can Write Up| A3
+        A3 -->|Can Write Up| A2
+        A2 -->|Can Write Up| A1
+    end
+    
+    style A1 fill:#ffcdd2
+    style A4 fill:#c8e6c9
+```
+---
+
+##### 1.4b Clark-Wilson Model (Integrity-Focused)  
+- **Definition:** Ensures system integrity by enforcing separation of duties and well-formed transactions.  
+- **Application:** Banking system enforces dual control — one employee enters a transaction, another must approve it.  
+- **Rule:** Prevents unauthorized modifications and enforces integrity constraints.  
+
+---
+```mermaid
+graph TB
+    subgraph "Clark-Wilson Model (Integrity)"
+    
+        B1[User] --> B2[Transformation Procedure]
+        B2 --> B3[Constrained Data Item]
+        B4[Integrity Verification] --> B3
+        B5[Separation of Duties] --> B2
+        B6[Well-Formed Transaction] --> B2
+    end
+
+    style B3 fill:#e8f5e8
+    style B6 fill:#e8f5e8
+```
+
+---
+
+##### 1.4c Other Advanced Security Model – Brewer-Nash (Chinese Wall Model)  
+- **Definition:** Prevents conflicts of interest by restricting access to data once a user accesses competing company data.  
+- **Application:** In a consulting firm, an analyst working on "Company A" cannot access "Company B" financial data.  
+- **Rule:** Protects against insider conflict-of-interest breaches.  
+
+---
+
+```mermaid
+graph TB
+    subgraph "Brewer-Nash Model (Chinese Wall)"
+        C1[Analyst] --> C2{Access Request}
+        C2 -->|Company A Data| C3[Grant Access]
+        C2 -->|Company B Data| C4{Conflict Check}
+        C4 -->|No Conflict| C5[Grant Access]
+        C4 -->|Conflict Detected| C6[Deny Access]
+        C3 --> C7[Wall Created]
+        C7 -.->|Blocks| C6
+    end
+
+    style C6 fill:#ffcdd2
+    style C7 fill:#fff3e0    
+```
+---
+
 ### 2. Implement Incident Response and Handling  
 - [ ] **2.1** Create an **Incident Response Plan (IRP)** covering the 5-step framework:  
   - [ ] **2.1a** Preparation  
