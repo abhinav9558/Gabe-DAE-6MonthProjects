@@ -23,13 +23,13 @@ The project must include technical writing with a clearly written cybersecurity 
 ---
 
 ## 1. Implement and Explain Advanced Cybersecurity Defense Strategies  
-- [ ] **1.1** Demonstrate **Zero Trust Architecture** by enforcing access controls across at least 2 security layers  
-- [ ] **1.2** Explain and apply **Defense in Depth** with at least 3 layers of defense in a system architecture  
-- [ ] **1.3** Demonstrate **Supply Chain Security** by documenting 1 example of risk identification and mitigation  
-- [ ] **1.4** Describe and apply 1 **advanced security model**:  
-  - [ ] **1.4a** Bell-LaPadula model  
-  - [ ] **1.4b** Clark-Wilson model  
-  - [ ] **1.4c** Other advanced security model (explanation + application to a system)  
+- [x] **1.1** Demonstrate **Zero Trust Architecture** by enforcing access controls across at least 2 security layers  
+- [x] **1.2** Explain and apply **Defense in Depth** with at least 3 layers of defense in a system architecture  
+- [x] **1.3** Demonstrate **Supply Chain Security** by documenting 1 example of risk identification and mitigation  
+- [x] **1.4** Describe and apply 1 **advanced security model**:  
+    - [x] **1.4a** Bell-LaPadula model  
+    - [x] **1.4b** Clark-Wilson model  
+    - [x] **1.4c** Other advanced security model (explanation + application to a system)  
 
 ---
 
