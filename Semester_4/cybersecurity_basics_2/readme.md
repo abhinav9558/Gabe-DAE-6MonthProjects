@@ -1,25 +1,4 @@
-Implement and Explain Advanced Cybersecurity Defense Strategies
-
-The project must demonstrate the application of Zero Trust Architecture by showing how access controls were enforced across at least 2 security layers. An explanation of Defense in Depth must be included, with at least 3 layers of defense clearly described and applied to a system architecture. Supply Chain Security must be demonstrated through documentation of 1 example where supply chain risks were identified and mitigated. The project must also describe 1 advanced security model, such as the Bell-LaPadula model or Clark-Wilson model, with an explanation of how it was applied to secure a system.
-
-Implement Incident Response and Handling
-
-The project must include an Incident Response Plan (IRP) that outlines a structured 5-step IR framework: preparation, identification, containment, eradication, and recovery. Digital forensics basics must be demonstrated by documenting the use of at least 1 forensic tool for data collection. Evidence collection and documentation must be supported by at least 2 forms of evidence (e.g., log files, screenshots) with proper chain of custody documentation. Incident triage and prioritization must be shown by categorizing 3 types of incidents based on severity and business impact. Post-incident analysis must be included, summarizing the incident outcome and describing at least 2 lessons learned.
-
-Demonstrate SOC (Security Operations Center) Fundamentals
-
-The project must explain SOC functions and operations by identifying at least 3 primary SOC roles and their responsibilities. Monitoring fundamentals must be demonstrated by configuring 1 monitoring tool and showcasing at least 2 types of network activity being monitored. Alert management must be shown with evidence of how 2 different security alerts were generated, investigated, and resolved. Basic threat detection must be demonstrated with an analysis of at least 1 identified threat and how it was detected using SOC tools.
-
-Develop and Implement Security Policies and Governance
-
-The project must include a policy development framework by providing a written security policy document covering at least 3 areas: access control, data protection, and system use policies. Governance structure must be demonstrated by outlining roles and responsibilities for enforcing the policy. Compliance requirements must be addressed with references to at least 1 security standard (e.g., ISO 27001, NIST CSF). Policy implementation must be demonstrated with evidence of how the security policies were communicated and enforced in a system.
-
-Produce Effective Security Documentation
-
-The project must include technical writing with a clearly written cybersecurity procedure document covering at least 1 security control implementation. Process documentation must be demonstrated with a documented step-by-step guide for at least 1 security task such as patch management or incident reporting. Security playbooks must be included, outlining at least 2 incident response scenarios with steps to follow. Knowledge base management must be demonstrated with a structured document repository containing at least 3 categorized resources for cybersecurity reference.
-
 # Cybersecurity Basics 2
-
 ---
 
 ## 1. Implement and Explain Advanced Cybersecurity Defense Strategies  
