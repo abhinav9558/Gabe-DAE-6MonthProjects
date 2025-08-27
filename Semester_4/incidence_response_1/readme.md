@@ -27,9 +27,9 @@ The project must include system recovery procedures for VirtualBox environment r
 ---
 
 ### 1. IR Environment Setup  
-- [ ] **1.1** Install and configure **Wazuh SIEM platform** on Parrot OS (VirtualBox)  
+- [ ] **1.1** Install and configure **Wazuh Agent** on Parrot OS (VirtualBox)  
 - [ ] **1.2** Deploy Wazuh **agent** on Parrot OS with evidence of functionality  
-- [ ] **1.3** Configure **log collection** from Parrot OS into Wazuh  
+- [ ] **1.3** Configure **log collection** from Parrot OS into Wazuh SIEM Platform 
 - [ ] **1.4** Create **3 custom alert rules** for security events in Wazuh  
 - [ ] **1.5** Configure and demonstrate **Wireshark** on Parrot OS with capture filters  
 - [ ] **1.6** Install and configure **Volatility framework** on Parrot OS for memory analysis  
@@ -38,6 +38,70 @@ The project must include system recovery procedures for VirtualBox environment r
   - [ ] **1.7b** macOS logs  
 - [ ] **1.8** Demonstrate successful **ingestion into Wazuh dashboard**  
 - [ ] **1.9** Provide proper **documentation and evidence** of all configurations  
+
+---
+
+## **1.1** Install and configure **Wazuh Agent** on Parrot OS (VirtualBox) 
+
+- Deploy a new agent in our Wazuh Endpoint Dashboard.
+- Then configure this endpoint for windows, linux, or macOS.
+- In this case we will configure an agent for `ParrotOSVM` which uses linux, Debian distros (Debx84 specifically.)
+
+---
+
+![WazuhEndpoints1_DeployAgent](img/WazuhEndpoints1_DeployAgent.png)
+Wazuh Endpoint Dashboard.
+
+---
+
+![WazuhEndpoints2_1](img/WazuhEndpoints2_1.png)
+![WazuhEndpoints2_2](img/WazuhEndpoints2_2.png)
+
+Instructions for installing our wazuh agent on our endpoint.
+
+- We select Deb Amd64 since that is the ParrotOS Debian version.
+- Our Wazuh SIEM platform is configured on another computer using the IPV4 address `192.168.1.139`.
+- In terminal we use the provide command given to us by our Wazuh SIEM platform and this will install and configure the agent seamlessly
+- In this process an authentication key is generated which will allow secure ocmmunication between the agent and the wazuh manager.
+
+---
+
+Installation and configuration of wazuh agent.
+
+```bash
+wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.12.0-1_amd64.deb && sudo WAZUH_MANAGER='192.168.1.139' WAZUH_AGENT_NAME='ParrotOSVM' dpkg -i ./wazuh-agent_4.12.0-1_amd64.deb
+```
+
+---
+
+### **1.2** Deploy Wazuh **agent** on Parrot OS with evidence of functionality 
+
+- We deploy the wazuh agent by enabling and starting through the given terminal commands. 
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable wazuh-agent
+sudo systemctl start wazuh-agent
+```
+### 1.3 Configure Log Collection from Parrot OS into Wazuh SIEM Platform
+
+Add log sources in `/var/ossec/etc/ossec.conf`:
+```xml
+<localfile>
+  <log_format>syslog</log_format>
+  <location>/var/log/auth.log</location>
+</localfile>
+
+<localfile>
+  <log_format>syslog</log_format>
+  <location>/var/log/syslog</location>
+</localfile>
+```
+
+Restart agent to apply:
+```bash
+sudo systemctl restart wazuh-agent
+```
 
 ---
 

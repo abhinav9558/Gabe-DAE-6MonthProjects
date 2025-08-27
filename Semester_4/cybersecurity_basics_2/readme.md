@@ -238,6 +238,7 @@ graph TB
     style C6 fill:#ffcdd2
     style C7 fill:#fff3e0    
 ```
+
 ---
 
 ## 2. Implement Incident Response and Handling  
