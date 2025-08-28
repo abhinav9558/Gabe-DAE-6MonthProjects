@@ -8,7 +8,7 @@
 - [x] **1.3** Configure **log collection** from Parrot OS into Wazuh SIEM Platform 
 - [x] **1.4** Create **3 custom alert rules** for security events in Wazuh  
 - [x] **1.5** Configure and demonstrate **Wireshark** on Parrot OS with capture filters  
-- [ ] **1.6** Install and configure **Volatility framework** on Parrot OS for memory analysis  
+- [x] **1.6** Install and configure **Volatility framework** on Parrot OS for memory analysis  
 - [x] **1.7** Configure **system logging** to collect Parrot OS logs 
   - [x] **1.7a** Provide proper **documentation and evidence** of all configurations 
   - [x] **1.7b** Demonstrate successful **ingestion into Wazuh dashboard**  
