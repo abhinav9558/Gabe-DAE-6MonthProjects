@@ -278,14 +278,14 @@ Check Wazuh dashboard → Security Events for entries with `agent.name: "ParrotO
 ---
 
 ### 2. Incident Detection and Analysis  
-- [ ] **2.1** Analyze **Parrot OS logs** using Wazuh  
-- [ ] **2.2** Document **analysis methodology** and findings  
-- [ ] **2.3** Investigate **1 suspicious login attempt** with:  
-  - [ ] **2.3a** Log correlation between host and Parrot OS  
-  - [ ] **2.3b** Event timeline creation  
-  - [ ] **2.3c** Alert validation process  
-- [ ] **2.4** Classify **3 distinct security incidents** using severity matrix  
-- [ ] **2.5** Document **methodologies** and **security implications**  
+- [x] **2.1** Analyze **Parrot OS logs** using Wazuh  
+- [x] **2.2** Document **analysis methodology** and findings  
+- [x] **2.3** Investigate **1 suspicious login attempt** with:  
+  - [x] **2.3a** Log correlation between host and Parrot OS  
+  - [x] **2.3b** Event timeline creation  
+  - [x] **2.3c** Alert validation process  
+- [x] **2.4** Classify **3 distinct security incidents** using severity matrix  
+- [x] **2.5** Document **methodologies** and **security implications**  
 
 --- 
 
