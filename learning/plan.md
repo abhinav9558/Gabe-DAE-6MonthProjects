@@ -57,7 +57,7 @@ MISP will be integrated into my SOC virtual lab to **enrich Wazuh alerts with th
 - **Week 3 (Sep 16–22):** Add enrichment modules and reporting features (Task 3).  
 - **Week 4 (Sep 23–29):** Finalize demos, collect screenshots, and draft reflection documentation.  
 
-## Flow Diagram 
+## Sequence Diagram 
 
 ```mermaid
 sequenceDiagram
