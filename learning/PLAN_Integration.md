@@ -1,4 +1,4 @@
-# MiSP Integration
+# MISP Integration
 
 Since I am using `docker-desktop` I will use `MISP-Docker` which is readily available at `https://github.com/misp/misp-docker` then navigating to the generated directory.
 
