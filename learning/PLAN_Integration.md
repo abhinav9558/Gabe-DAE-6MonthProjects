@@ -10,8 +10,9 @@ git docker-compose pull
 git docker-compose up
 ```
 
-Due to the fact that my Wazuh Manager was using port 443, it caused installation issues with MISP so I had to change the port to 444. Originally under ports it was `443:443` and was changed to be `444:443`. This way MISP can be utilized under a different port without complications with wazuh.
+## Port 443 Error 
 
+Due to the fact that my Wazuh Manager was using port 443, it caused installation issues with MISP so I had to change the port to 444. Originally under ports it was `443:443` and was changed to be `444:443`. This way MISP can be utilized under a different port without complications with wazuh.
 
 ```text
 
@@ -36,7 +37,7 @@ build:
   context: core/.
 ```
 
-### MISP Docker Clean Restart Solution
+## MISP Docker Clean Restart Solution
 
 ### Log File Error
 ```test
