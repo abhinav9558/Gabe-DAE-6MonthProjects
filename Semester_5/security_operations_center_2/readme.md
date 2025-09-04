@@ -219,12 +219,12 @@ The incident validated that Wazuh SIEM and custom FTP rulesets provide effective
 ---
 
 ## 3. Threat Hunting & Intelligence
-- [ ] **3.1** Perform a simple search in collected logs for unusual activity (e.g., odd IP address, suspicious command).  
-- [ ] **3.2** If a suspicious indicator is found, verify it using a free threat intelligence site (e.g., VirusTotal).  
-- [ ] **3.3** Document the following in your incident report:  
-    - [ ] **3.3a** Search queries used  
-    - [ ] **3.3b** Indicator discovered  
-    - [ ] **3.3c** Screenshot or summary of verification  
+- [x] **3.1** Perform a simple search in collected logs for unusual activity (e.g., odd IP address, suspicious command).  
+- [x] **3.2** If a suspicious indicator is found, verify it using a free threat intelligence site (e.g., VirusTotal, Threatfox, Mitre-Atlas).  
+- [x] **3.3** Document the following in your incident report:  
+    - [x] **3.3a** Search queries used  
+    - [x] **3.3b** Indicator discovered  
+    - [x] **3.3c** Screenshot or summary of verification  
 
 ---
 
@@ -291,9 +291,65 @@ The indicator discovered in Wazuh logs was confirmed malicious through external 
 
 
 ## 4. Automation & Orchestration
-- [ ] **4.1** Implement a basic automated response using a Python script or a free workflow tool (e.g., Shuffle).  
-- [ ] **4.2** Automate at least one of the following tasks:  
-    - [ ] **4.2a** Sending an email upon alert trigger  
-    - [ ] **4.2b** Adding a note to the incident record  
+- [x] **4.1** Implement a basic automated response using a Python script or a free workflow tool (e.g., Shuffle).  
+- [x] **4.2** Automate at least one of the following tasks:  
+    - [x] **4.2a** Sending an email upon alert trigger  
+    - [x] **4.2b** Adding a note to the incident record  
 - [ ] **4.3** Provide evidence of automation in action (e.g., screenshot, log output).  
 - [ ] **4.4** Document your workflow clearly in your report.  
+
+---
+
+### **4.1 Automated Response Implementation**  
+A basic **Python script** was developed to demonstrate automated response capabilities.  
+The script monitors Wazuh alerts via log files and, when a **Level 10 Alert** is detected (e.g., brute-force FTP login attempts), it automatically sends an email notification to the SOC analyst team.  
+
+---
+
+### **4.2 Automated Task**  
+
+#### **4.2a Sending an Email Upon Alert Trigger**  
+The following Python script checks for critical alerts in `alerts.json` and sends an email if an alert is detected:  
+
+```python
+import json
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+# Configuration
+ALERT_FILE = "/var/ossec/logs/alerts/alerts.json"
+SMTP_SERVER = "smtp.gmail.com"
+SMTP_PORT = 587
+EMAIL_USER = "soc.alerts@example.com"
+EMAIL_PASS = "yourpassword"
+EMAIL_TO = "soc.team@example.com"
+
+def send_email(subject, body):
+    msg = MIMEMultipart()
+    msg['From'] = EMAIL_USER
+    msg['To'] = EMAIL_TO
+    msg['Subject'] = subject
+
+    msg.attach(MIMEText(body, 'plain'))
+
+    server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+    server.starttls()
+    server.login(EMAIL_USER, EMAIL_PASS)
+    server.sendmail(EMAIL_USER, EMAIL_TO, msg.as_string())
+    server.quit()
+
+def check_alerts():
+    with open(ALERT_FILE, 'r') as f:
+        for line in f:
+            alert = json.loads(line)
+            if alert.get("rule", {}).get("level") == 10:
+                description = alert.get("rule", {}).get("description")
+                srcip = alert.get("data", {}).get("srcip", "N/A")
+                body = f"Critical Alert Detected:\n\nRule: {description}\nSource IP: {srcip}"
+                send_email("Critical SOC Alert", body)
+
+if __name__ == "__main__":
+    check_alerts()
+```
+
