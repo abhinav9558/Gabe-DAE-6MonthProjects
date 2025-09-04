@@ -55,7 +55,8 @@ A suspicious login attempt was detected through SIEM correlation rules (SSH and 
 ### **1.5 Incident Report**  
 
 #### **1.5a Screenshot of the Alert**  
-*(Insert screenshot from Wazuh SIEM showing triggered SSH/FTP login failure rule)*  
+![ssh_alert]()
+![ftp_alert]() 
 
 #### **1.5b Timeline of Events**  
 | **Time (UTC)** | **Event** | **Details** |  
