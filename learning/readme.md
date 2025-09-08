@@ -1,12 +1,40 @@
 # How do I inetegrate MISP with Wazuh?
 
-`MISP` is short for `Malware Information Sharing Platform` and when paired with a `SIEM (Security Information and Event Manager)` software we can match already caught IoCs from other individuals to the events occuring on our monitored computer systems. 
+**MISP** is short for **Malware Information Sharing Platform** and when paired with a **SIEM (Security Information and Event Manager)** software we can match already caught IoCs from other individuals to the events occuring on our monitored computer systems. 
 
-The SIEM software being used is `Wazuh` which is a free and open source program that when installed will allow us to have a manager and a series of endpoints that are installed on the machines we want to protect. The version of Wazuh we are using can also be setup with `docker-desktop` as a container so when we open docker-desktop it should allow us to open both technologies at the same time.
+The SIEM software being used is **Wazuh** which is a free and open source program that when installed will allow us to have a manager and a series of endpoints that are installed on the machines we want to protect. The version of Wazuh we are using can also be setup with **docker-desktop** as a container so when we open docker-desktop it should allow us to open both technologies at the same time.
 
 When MISP is paired with Wazuh it will enrich the logs we are already receiving and will save me time from having to manually look up the information.
 
-Since I am using `docker-desktop` already it is best to use `MISP-Docker` which is readily available at `https://github.com/misp/misp-docker` then navigating to the generated directory.
+---
+
+## Why did I chose MISP?
+
+#### 1. Enhanced Alert Quality & Context
+- **Automated IOC enrichment** - Alerts come pre-loaded with threat context instead of requiring manual lookups
+
+#### 2. Faster Incident Response
+- **Pre-built threat profiles** - Instant access to known TTPs for faster analysis
+
+#### 3. Workflow Efficiency
+- **Automated enrichment** - No manual copy/paste of IOCs for lookups
+
+#### 4. Detection Coverage
+- **Community intelligence** - Benefit from threat sharing with other organizations
+
+#### 5. Operational Benefits
+- **Reduced alert fatigue** - Better quality alerts mean fewer unnecessary investigations
+
+#### 6. Investigation Support
+- **Pivot capabilities** - Jump from one indicator to related threats quickly
+
+Overall it transforms reactive alert processing into proactive, intelligence-driven security operations.
+
+---
+
+## How did I install it?
+
+Since I am using **docker-desktop** already it is best to use **MISP-Docker** which is readily available at **https://github.com/misp/misp-docker** then navigating to the generated directory.
 
 ```bash
 cd Desktop
@@ -16,7 +44,15 @@ git docker-compose pull
 git docker-compose up
 ```
 
-## Port 443 Error 
+---
+
+## What were my largest difficulties?
+
+- Port 443 Error as Wazuh is already using this port, meaning we need to configure MISP to use localhost:444
+- Improper build configurations with docker-compose.yml
+- Permission errors when trying to build/access certain files and folders
+
+### Port 443 Error & proper build configuration
 
 Due to the fact that my Wazuh Manager was using port 443, it caused installation issues with MISP so I had to change the port to 444. Originally under ports it was `443:443` and was changed to be `444:443`. This way MISP can be utilized under a different port without complications with wazuh.
 
@@ -43,14 +79,15 @@ build:
   context: core/.
 ```
 
-## MISP Docker Clean Restart Solution
+### MISP Docker Clean Restart Solution
 
-### Log File Error
+#### Log File Error
+
 ```test
 Warning Error: copy(/var/www/MISP/app/Config/config.backup.php): Failed to open stream: Permission denied
 ```
 
-#### Issue
+### Issue
 MISP-Docker container failing to start due to permission errors and missing SysLogLogable plugin (however this could be a red herring issue caused by permission errors).
 
 The core issue was file ownership and permissions. Here's what was happening:
@@ -127,10 +164,11 @@ ls -la configs logs files gnupg ssl
 ```
 Should show `33 33` or `www-data www-data` as owner.
 
-
-### Using MISP
+## Using MISP
 
 #### Log-in
+
+There is a default login username and password already that we will use but can be changed at a later date.
 
 ```text
 
@@ -144,9 +182,3 @@ admin
 
 ![MISP_Dashboard](img/MISP_DB.png)
 
-
-As statied before MISP is short for Malware Information Sharing Platform and when paired with a SIEM (Security Information and Event Manager) software we can pair already caught IoCs from other individuals to the events occuring protected systems that have our SIEM endpoints installed. 
-
-The software being used is Wazuh which is a free and open source SIEM that when installed will allow us to have a manager and a series of endpoints that are installed on the machines we want to protect. The version of Wazuh we are using can also be setup with docker-desktop as a container so when we open docker-desktop it should allow us to open both technologies at the same time.
-
-When MISP is paired with Wazuh it will enrich the logs we are already receiving and will save me time from having to manually look up the information.
