@@ -1,4 +1,4 @@
-# How do I inetegrate MISP with Wazuh?
+# How do I integrate MISP with Wazuh?
 
 **MISP** is short for **Malware Information Sharing Platform** and when paired with a **SIEM (Security Information and Event Manager)** software we can match already caught IoCs from other individuals to the events occuring on our monitored computer systems. 
 
