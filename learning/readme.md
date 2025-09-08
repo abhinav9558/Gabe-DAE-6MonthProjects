@@ -1,6 +1,12 @@
-# MISP Integration
+# How do I inetegrate MISP with Wazuh?
 
-Since I am using `docker-desktop` I will use `MISP-Docker` which is readily available at `https://github.com/misp/misp-docker` then navigating to the generated directory.
+`MISP` is short for `Malware Information Sharing Platform` and when paired with a `SIEM (Security Information and Event Manager)` software we can match already caught IoCs from other individuals to the events occuring on our monitored computer systems. 
+
+The SIEM software being used is `Wazuh` which is a free and open source program that when installed will allow us to have a manager and a series of endpoints that are installed on the machines we want to protect. The version of Wazuh we are using can also be setup with `docker-desktop` as a container so when we open docker-desktop it should allow us to open both technologies at the same time.
+
+When MISP is paired with Wazuh it will enrich the logs we are already receiving and will save me time from having to manually look up the information.
+
+Since I am using `docker-desktop` already it is best to use `MISP-Docker` which is readily available at `https://github.com/misp/misp-docker` then navigating to the generated directory.
 
 ```bash
 cd Desktop
@@ -137,3 +143,10 @@ admin
 ```
 
 ![MISP_Dashboard](img/MISP_DB.png)
+
+
+As statied before MISP is short for Malware Information Sharing Platform and when paired with a SIEM (Security Information and Event Manager) software we can pair already caught IoCs from other individuals to the events occuring protected systems that have our SIEM endpoints installed. 
+
+The software being used is Wazuh which is a free and open source SIEM that when installed will allow us to have a manager and a series of endpoints that are installed on the machines we want to protect. The version of Wazuh we are using can also be setup with docker-desktop as a container so when we open docker-desktop it should allow us to open both technologies at the same time.
+
+When MISP is paired with Wazuh it will enrich the logs we are already receiving and will save me time from having to manually look up the information.
